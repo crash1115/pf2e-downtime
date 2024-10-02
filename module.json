@@ -1,0 +1,37 @@
+{
+  "id": "pf2e-downtime",
+  "title": "PF2e Downtime",
+  "version": "0.1.0",
+  "compatibility": {
+    "minimum": "12",
+    "verified": "12"
+  },
+  "relationships": {
+    "systems": [
+      {
+        "id": "pf2e",
+        "type": "system",
+        "compatibility": {}
+      }
+    ]
+  },
+  "authors": [
+    {
+      "name": "Chelsea Ash",
+      "url": "https://github.com/crash1115",
+      "discord": "crash1115",
+      "flags": {}
+    }
+  ],
+  "esmodules": [
+    "./scripts/pf2e-downtime.js"
+  ],
+  "styles": [
+    "./styles/pf2e-downtime.css"
+  ],
+  "flags": {
+    "hotReload": {
+        "extensions": ["html", "css", "json"]
+    }
+  }
+}
