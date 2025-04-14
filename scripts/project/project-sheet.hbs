@@ -1,0 +1,16 @@
+<div>
+    <p>ID: {{project.id}}</p>
+    <p>Name: {{project.name}}</p>
+    <p>Current Progress: {{project.progress.current}}</p>
+    <p>Max Progress: {{project.progress.max}}</p>
+    <p>Progress: Label {{project.progress.label}}</p>
+    <p>Note: {{project.note}}</p>
+    <p>Image: {{project.img}}</p>
+
+
+    {{!-- <button type="button" data-action="testAction">Do the test action!</button> --}}
+    <button type="submit">Save and Close</button>
+    
+</div>
+
+{{log this level="warn"}}

@@ -17,7 +17,7 @@
   },
   "authors": [
     {
-      "name": "Chelsea Ash",
+      "name": "CRASH1115",
       "url": "https://github.com/crash1115",
       "discord": "crash1115",
       "flags": {}
@@ -31,7 +31,7 @@
   ],
   "flags": {
     "hotReload": {
-        "extensions": ["html", "css", "json"]
+        "extensions": ["hbs", "html", "css", "json"]
     }
   }
 }

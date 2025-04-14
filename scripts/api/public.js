@@ -1,0 +1,95 @@
+import { AwardHandler } from "../award/AwardHandler.js";
+import { SpendHandler } from "../award/SpendHandler.js";
+import { ProjectHandler } from "../project/ProjectHandler.js";
+
+export class PF2EDowntimeApi {
+
+    /**
+   * Give downtime units to the given actor
+   * @param {actorId} string                      The id of the actor to award downtime to
+   * @returns {Promise<void>}
+   */
+    static awardDowntimeToActor(actorId){
+        const actor = game.actors.get(actorId);
+        if(!actor){
+            ui.notifications.error(`Could not find actor with id ${actorId}.`)
+            return;
+        }
+        return AwardHandler.awardDowntimeToActor(actor);
+    }
+
+    /**
+   * Give downtime units to each actor in the given party
+   * @param {actorId} string                      The id of the party actor to award downtime to
+   * @returns {Promise<void>}
+   */
+    static awardDowntimeToParty(){
+        return AwardHandler.awardDowntimeToParty();
+    }
+
+    /**
+   * Creates a new Project object
+   * @returns {Project}
+   */
+    static createProject(){
+        return ProjectHandler.createProject();
+    }
+
+    /**
+   * Creates a new Project with default values and assigns it to the given actor
+   * @param {actorId} string                      The id of the actor to give the project to
+   * @returns {Promise<Project>}
+   */    
+    static async createProjectForActor(actorId){
+        const actor = game.actors.get(actorId);
+        if(!actor){
+            ui.notifications.error(`Could not find actor with id ${actorId}.`)
+            return;
+        }
+        return ProjectHandler.createProjectForActor(actor)
+    }
+
+    /**
+   * Gets an array containing all projects for a given actor
+   * @param {actorId} string                      The id of the actor to get projects from
+   * @returns {Project[]}
+   */
+    static getAllProjectsForActor(actorId){
+        const actor = game.actors.get(actorId);
+        if(!actor){
+            ui.notifications.error(`Could not find actor with id ${actorId}.`)
+            return;
+        }
+        return ProjectHandler.getAllProjectsForActor(actor);
+    }
+
+    /**
+   * Gets a specific project from a given actor
+   * @param {projectId} string                      The id of the project
+   * @param {actorId} string                        The id of the actor that owns the project
+   * @returns {Project}
+   */
+    static getProjectForActor(projectId, actorId){
+        const actor = game.actors.get(actorId);
+        if(!actor){
+            ui.notifications.error(`Could not find actor with id ${actorId}.`)
+            return;
+        }
+        return ProjectHandler.getProjectForActor(projectId, actor);
+    }
+
+    /**
+   * Opens the dialog to spend downtime for the given actor
+   * @param {actorId} string                        The id of the actor to spend downtime
+   * @returns {Promise<void>}
+   */
+    static spendDowntimeForActor(actorId){
+        const actor = game.actors.get(actorId);
+        if(!actor){
+            ui.notifications.error(`Could not find actor with id ${actorId}.`)
+            return;
+        }
+        return SpendHandler.spendDowntime(actor);
+    }
+}
+

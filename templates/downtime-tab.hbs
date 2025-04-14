@@ -1,4 +1,32 @@
 <section class="tab pf2e-downtime major" data-group="primary" data-tab="pf2e-downtime">
-    <header>Downtime</header>
-    <div class="test">TEST</div>
+    
+    {{!-- DOWNTIME MANAGEMENT  --}}
+    <header>Available Downtime</header>   
+    <div class="pf2e-downtime-available">
+        <h4 class="pf2e-downtime-days-available">{{actor.flags.pf2e-downtime.downtimeDays}} days</h4>
+        {{#if user.isGM}}
+        <button class="pf2e-downtime-award-downtime" type="button"><i class="fas fa-house"></i> Award</button>
+        {{/if}}
+        <button class="pf2e-downtime-spend-downtime" type="button"><i class="fas fa-rotate"></i> Spend</button>
+    </div>
+    
+    {{!-- DOWNTIME PROJECTS --}}
+    <header>Downtime Projects</header>
+    
+    <ul class="pf2e-downtime-projects-list">
+        {{#each actor.flags.pf2e-downtime.projects}}
+        <li class="pf2e-downtime-project">
+            <div class="pf2e-downtime-project-image"></div>
+            <h4 class="pf2e-downtime-project-title">{{this.name}}</h4>
+            <div class="pf2e-downtime-project-progress">{{this.progress.current}} / {{this.progress.max}} {{this.progress.label}}</div>
+            <div class="pf2e-downtime-project-controls">
+                <button class="pf2e-downtime-edit-project"type="button" data-pf2e-downtime-project-id="{{this.id}}"><i class="fas fa-edit"></i></button>
+                <button class="pf2e-downtime-delete-project" type="button" data-pf2e-downtime-project-id="{{this.id}}"><i class="fas fa-trash"></i></button>
+            </div>         
+        </li>
+        {{/each}}
+    </ul>
+    
+    <button class="pf2e-downtime-add-project" type="button"><i class="fas fa-plus"></i> New Project</button>
+
 </section>

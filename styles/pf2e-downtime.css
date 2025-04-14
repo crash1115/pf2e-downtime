@@ -1,3 +1,57 @@
-.pf2e-downtime .test {
-  color: red;
+.pf2e-downtime div.pf2e-downtime-available {
+  display: flex;
+}
+.pf2e-downtime div.pf2e-downtime-available h4.pf2e-downtime-days-available {
+  flex: 10;
+}
+.pf2e-downtime div.pf2e-downtime-available button.pf2e-downtime-award-downtime,
+.pf2e-downtime div.pf2e-downtime-available button.pf2e-downtime-spend-downtime {
+  flex: 4;
+}
+.pf2e-downtime ul.pf2e-downtime-projects-list {
+  padding-left: 0px;
+}
+.pf2e-downtime ul.pf2e-downtime-projects-list li.pf2e-downtime-project {
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: min-content 200px auto 35px;
+  height: 35px;
+}
+.pf2e-downtime ul.pf2e-downtime-projects-list li.pf2e-downtime-project:nth-child(odd) {
+  background-color: rgba(120, 100, 82, 0.1);
+}
+.pf2e-downtime ul.pf2e-downtime-projects-list li.pf2e-downtime-project .pf2e-downtime-project-image {
+  background: yellowgreen;
+  margin-right: 5px;
+  width: 33px;
+  height: 33px;
+  align-self: center;
+}
+.pf2e-downtime ul.pf2e-downtime-projects-list li.pf2e-downtime-project .pf2e-downtime-project-title {
+  text-align: left;
+  margin-bottom: 0;
+  align-self: center;
+}
+.pf2e-downtime ul.pf2e-downtime-projects-list li.pf2e-downtime-project .pf2e-downtime-project-progress {
+  align-self: center;
+}
+.pf2e-downtime ul.pf2e-downtime-projects-list li.pf2e-downtime-project .pf2e-downtime-project-controls {
+  align-self: center;
+  display: flex;
+  height: 100%;
+}
+.pf2e-downtime ul.pf2e-downtime-projects-list li.pf2e-downtime-project .pf2e-downtime-project-controls button.pf2e-downtime-edit-project,
+.pf2e-downtime ul.pf2e-downtime-projects-list li.pf2e-downtime-project .pf2e-downtime-project-controls button.pf2e-downtime-delete-project {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  box-shadow: none;
+  display: inline-grid;
+  align-self: center;
+  font-size: var(--font-size-12);
+}
+.pf2e-downtime ul.pf2e-downtime-projects-list li.pf2e-downtime-project .pf2e-downtime-project-controls button.pf2e-downtime-edit-project:hover,
+.pf2e-downtime ul.pf2e-downtime-projects-list li.pf2e-downtime-project .pf2e-downtime-project-controls button.pf2e-downtime-delete-project:hover {
+  text-shadow: 0 0 8px var(--color-shadow-primary);
 }
