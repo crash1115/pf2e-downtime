@@ -17,7 +17,7 @@
         {{#each actor.flags.pf2e-downtime.projects}}
         <li class="pf2e-downtime-project">
             <div class="pf2e-downtime-project-image"></div>
-            <h4 class="pf2e-downtime-project-title">{{this.name}}</h4>
+            <h4 class="pf2e-downtime-project-title {{#if (eq this.progress.current this.progress.max)}}complete{{/if}}">{{this.name}}</h4>
             <div class="pf2e-downtime-project-progress">{{this.progress.current}} / {{this.progress.max}} {{this.progress.label}}</div>
             <div class="pf2e-downtime-project-controls">
                 <button class="pf2e-downtime-edit-project"type="button" data-pf2e-downtime-project-id="{{this.id}}"><i class="fas fa-edit"></i></button>

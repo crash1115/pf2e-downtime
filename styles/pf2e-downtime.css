@@ -32,6 +32,9 @@
   margin-bottom: 0;
   align-self: center;
 }
+.pf2e-downtime ul.pf2e-downtime-projects-list li.pf2e-downtime-project .pf2e-downtime-project-title.complete {
+  text-decoration: line-through;
+}
 .pf2e-downtime ul.pf2e-downtime-projects-list li.pf2e-downtime-project .pf2e-downtime-project-progress {
   align-self: center;
 }
