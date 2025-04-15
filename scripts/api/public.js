@@ -6,7 +6,7 @@ export class PF2EDowntimeApi {
 
     /**
    * Give downtime units to the given actor
-   * @param {actorId} string                      The id of the actor to award downtime to
+   * @param {string} actorId                      The id of the actor to award downtime to
    * @returns {Promise<void>}
    */
     static awardDowntimeToActor(actorId){
@@ -20,7 +20,7 @@ export class PF2EDowntimeApi {
 
     /**
    * Give downtime units to each actor in the given party
-   * @param {actorId} string                      The id of the party actor to award downtime to
+   * @param {string} [partyId]                    Optional. The id of the party actor to award downtime to. If not provided, the award dialog will give options in a dropdown.
    * @returns {Promise<void>}
    */
     static awardDowntimeToParty(partyId = undefined){
@@ -37,7 +37,7 @@ export class PF2EDowntimeApi {
 
     /**
    * Creates a new Project with default values and assigns it to the given actor
-   * @param {actorId} string                      The id of the actor to give the project to
+   * @param {string} actorId                      The id of the actor to give the project to
    * @returns {Promise<Project>}
    */    
     static async createProjectForActor(actorId){
@@ -51,7 +51,7 @@ export class PF2EDowntimeApi {
 
     /**
    * Gets an array containing all projects for a given actor
-   * @param {actorId} string                      The id of the actor to get projects from
+   * @param {string} actorId                      The id of the actor to get projects from
    * @returns {Project[]}
    */
     static getAllProjectsForActor(actorId){
@@ -65,8 +65,8 @@ export class PF2EDowntimeApi {
 
     /**
    * Gets a specific project from a given actor
-   * @param {projectId} string                      The id of the project
-   * @param {actorId} string                        The id of the actor that owns the project
+   * @param {string} projectId                      The id of the project
+   * @param {string} actorId                        The id of the actor that owns the project
    * @returns {Project}
    */
     static getProjectForActor(projectId, actorId){
@@ -80,7 +80,7 @@ export class PF2EDowntimeApi {
 
     /**
    * Opens the dialog to spend downtime for the given actor
-   * @param {actorId} string                        The id of the actor to spend downtime
+   * @param {string} actorId                        The id of the actor to spend downtime
    * @returns {Promise<void>}
    */
     static spendDowntimeForActor(actorId){
