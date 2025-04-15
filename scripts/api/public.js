@@ -79,6 +79,22 @@ export class PF2EDowntimeApi {
     }
 
     /**
+   * Opens a specific project from a given actor
+   * @param {string} projectId                      The id of the project
+   * @param {string} actorId                        The id of the actor that owns the project
+   * @returns {Project}
+   */
+    static editProjectForActor(projectId, actorId){
+        const actor = game.actors.get(actorId);
+        if(!actor){
+            ui.notifications.error(`Could not find actor with id ${actorId}.`)
+            return;
+        }
+        const project = this.getProjectForActor(projectId, actorId);
+        return ProjectHandler.openProject(project, actor);
+    }
+
+    /**
    * Opens the dialog to spend downtime for the given actor
    * @param {string} actorId                        The id of the actor to spend downtime
    * @returns {Promise<void>}
