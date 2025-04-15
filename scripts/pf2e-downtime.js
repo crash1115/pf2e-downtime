@@ -6,8 +6,8 @@ import { pf2eDowntimeHelpers } from "./handlebars-helpers.js";
 
 export const MODULE = "pf2e-downtime";
 
-// Register Settings and Helpers
 Hooks.on(`init`, () => {
+    // Register Settings
     game.settings.register(MODULE, "downtimeUnit", {
         name: "Downtime Unit",
         hint: "Define a unit for measure for downtime spent and given. Should be the singular form of the word, ex: hour, day, week, month, etc.",
@@ -15,14 +15,13 @@ Hooks.on(`init`, () => {
         config: true,
         default: "day",
         type: String,
-      });
+    });
 
-      Handlebars.registerHelper(pf2eDowntimeHelpers);
-});
+    // Register Helpers
+    Handlebars.registerHelper(pf2eDowntimeHelpers);
 
-// Public API
-Hooks.on(`ready`, () => {
-    globalThis.PF2EDowntimeApi = PF2EDowntimeApi;
+    // Provide the public api
+    game.modules.get(MODULE).api = PF2EDowntimeApi
 });
 
 // Add Tab to Actor Sheets
