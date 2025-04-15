@@ -2,10 +2,11 @@ import { PF2EDowntimeApi } from "./api/public.js";
 import { ProjectHandler } from "./project/ProjectHandler.js";
 import { AwardHandler } from "./award/AwardHandler.js";
 import { SpendHandler } from "./award/SpendHandler.js";
+import { pf2eDowntimeHelpers } from "./handlebars-helpers.js";
 
 export const MODULE = "pf2e-downtime";
 
-// Register Settings
+// Register Settings and Helpers
 Hooks.on(`init`, () => {
     game.settings.register(MODULE, "downtimeUnit", {
         name: "Downtime Unit",
@@ -15,6 +16,8 @@ Hooks.on(`init`, () => {
         default: "day",
         type: String,
       });
+
+      Handlebars.registerHelper(pf2eDowntimeHelpers);
 });
 
 // Public API
