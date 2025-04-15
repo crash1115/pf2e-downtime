@@ -23,12 +23,23 @@ export class ProjectHandler {
 
     static async deleteProjectForActor(projectId, actor){
         if(!actor){
-            cui.notifications.error(`Could not delete project, invalid actor.`);
+            ui.notifications.error(`Could not delete project, invalid actor.`);
             return;
         }
         const allProjects = ProjectHandler.getAllProjectsForActor(actor);
         const newProjects = allProjects.filter (p => p.id != projectId);
         await actor.setFlag(MODULE, "projects", newProjects);
+    }
+
+    static async restartProjectForActor(projectId, actor){
+        if(!actor){
+            ui.notifications.error(`Could not restart project, invalid actor.`);
+            return;
+        }
+        const allProjects = actor.getFlag(MODULE, "projects") || [];
+        const project = this.getProjectForActor(projectId, actor);
+        project.progress.current = 0;
+        await actor.setFlag(MODULE, "projects", allProjects);
     }
 
 

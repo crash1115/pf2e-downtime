@@ -103,11 +103,36 @@ function activateDowntimeTabListeners(actorData, html){
         const confirmed = await foundry.applications.api.DialogV2.confirm({ 
             window: {
                 title: "Confirm Project Deletion"
+            },
+            position: {
+                width: 420
             }, 
             content:`Are you sure you want to delete ${project.name}? This action cannot be undone.` 
         });
         if(confirmed){
             ProjectHandler.deleteProjectForActor(projectId, actor);
+        } else {
+            ui.notifications.warn(`Project deletion aborted.`);
+        }
+    });
+
+    html.find('.pf2e-downtime-restart-project').click(async (ev) => {
+        const actor = game.actors.get(actorData._id);
+        const projectId = ev.currentTarget.getAttribute('data-pf2e-downtime-project-id');
+        const project = ProjectHandler.getProjectForActor(projectId, actor);
+        const confirmed = await foundry.applications.api.DialogV2.confirm({ 
+            window: {
+                title: "Confirm Project Restart"
+            },
+            position: {
+                width: 420
+            },
+            content:`Restarting a project will reset its progress to zero, but leave all other data intact. Are you sure you want to restart ${project.name}? This action cannot be undone.` 
+        });
+        if(confirmed){
+            ProjectHandler.restartProjectForActor(projectId, actor);
+        } else {
+            ui.notifications.warn("Project reset cancelled.");
         }
     });
 }
