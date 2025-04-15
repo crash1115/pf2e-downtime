@@ -23,8 +23,8 @@ export class PF2EDowntimeApi {
    * @param {actorId} string                      The id of the party actor to award downtime to
    * @returns {Promise<void>}
    */
-    static awardDowntimeToParty(){
-        return AwardHandler.awardDowntimeToParty();
+    static awardDowntimeToParty(partyId = undefined){
+        return AwardHandler.awardDowntimeToParty(partyId);
     }
 
     /**

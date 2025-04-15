@@ -5,6 +5,18 @@ import { SpendHandler } from "./award/SpendHandler.js";
 
 export const MODULE = "pf2e-downtime";
 
+// Register Settings
+Hooks.on(`init`, () => {
+    game.settings.register(MODULE, "downtimeUnit", {
+        name: "Downtime Unit",
+        hint: "Define a unit for measure for downtime spent and given. Should be the singular form of the word, ex: hour, day, week, month, etc.",
+        scope: "world",
+        config: true,
+        default: "day",
+        type: String,
+      });
+});
+
 // Public API
 Hooks.on(`ready`, () => {
     globalThis.PF2EDowntimeApi = PF2EDowntimeApi;
@@ -98,7 +110,11 @@ async function addButtonToPartySheetHeader(app, data) {
         label: 'Award Downtime',
         class: 'pf2e-downtime',
         icon: 'fas fa-house',
-        onclick: AwardHandler.awardDowntimeToParty
+        onclick: callback
     }
     data.unshift(button);
+
+    function callback(){
+        AwardHandler.awardDowntimeToParty(app.actor._id);
+    }
 }

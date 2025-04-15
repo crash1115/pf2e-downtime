@@ -2,21 +2,24 @@ import { MODULE } from "../pf2e-downtime.js";
 
 export class AwardHandler {
     
-    static async awardDowntimeToParty(){
+    static async awardDowntimeToParty(partyId = undefined){
         if(!game.user.isGM){
             ui.notifications.error("You must be a GM to award downtime.")
             return;
         }
 
+        const UNIT = game.settings.get(MODULE, 'downtimeUnit').toLowerCase();
+        const UNIT_CAP = UNIT.charAt(0).toUpperCase() + UNIT.slice(1);
+
         const {DialogV2} = foundry.applications.api;
         const fields = foundry.data.fields;
-        const parties = game.actors.filter(p => p.type === "party");
+        const parties = partyId ? [game.actors.get(partyId)] : game.actors.filter(p => p.type === "party");
         const choices = parties.reduce((choices, actor) => Object.assign(choices, {[actor.id]: actor.name}), {});
        
         const partySelect = new fields.StringField({
             blank: false, 
             required: true, 
-            choices,
+            choices: choices,
             label: "Party"
         });
         
@@ -25,7 +28,7 @@ export class AwardHandler {
             integer: true, 
             nullable: false,
             initial: 0,
-            label: "Downtime Days"
+            label: `Downtime ${UNIT_CAP}(s)`
         });
 
         const template = `
@@ -33,7 +36,7 @@ export class AwardHandler {
             {{formGroup daysField name="days"}}
         `;
         
-        const content = `<p>Every Player Character in the selected party will recieve a number of downtime days equal to the value given.</p>`
+        const content = `<p>Every Player Character in the selected party will recieve a number of downtime ${UNIT}(s) equal to the value given.</p>`
                          + Handlebars.compile(template)({ partySelect, daysField });
         
         const response = await DialogV2.confirm({
@@ -69,7 +72,7 @@ export class AwardHandler {
             const newDays = downtimeDays + response.days;
             await actor.setFlag(MODULE,"downtimeDays", newDays);
 
-            const msg = `Awarded ${response.days} downtime day(s) to ${actor.name}. They now have ${newDays}.`;
+            const msg = `Awarded ${response.days} downtime ${UNIT}(s) to ${actor.name}. They now have ${newDays}.`;
             ui.notifications.notify(msg);
         }
     }
@@ -80,6 +83,9 @@ export class AwardHandler {
             return;
         }
 
+        const UNIT = game.settings.get(MODULE, 'downtimeUnit').toLowerCase();
+        const UNIT_CAP = UNIT.charAt(0).toUpperCase() + UNIT.slice(1);
+
         const {DialogV2} = foundry.applications.api;
         const fields = foundry.data.fields;
          
@@ -88,14 +94,14 @@ export class AwardHandler {
             integer: true, 
             nullable: false,
             initial: 0,
-            label: "Downtime Days"
+            label: `Downtime ${UNIT_CAP}(s)`
         });
 
         const template = `
             {{formGroup daysField name="days"}}
         `;
         
-        const content = `<p>${actor.name} will recieve a number of downtime days equal to the value given.</p>`
+        const content = `<p>${actor.name} will recieve a number of downtime ${UNIT}s equal to the value given.</p>`
                          + Handlebars.compile(template)({ daysField });
         
         const response = await DialogV2.confirm({
@@ -125,7 +131,7 @@ export class AwardHandler {
         const newDays = downtimeDays + response.days;
         await actor.setFlag(MODULE,"downtimeDays", newDays);
 
-        const msg = `Awarded ${response.days} downtime day(s) to ${actor.name}. They now have ${newDays}.`;
+        const msg = `Awarded ${response.days} downtime ${UNIT}(s) to ${actor.name}. They now have ${newDays}.`;
         ui.notifications.notify(msg);
     
     }

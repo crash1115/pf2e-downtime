@@ -55,4 +55,3 @@ export class ProjectApp extends HandlebarsApplicationMixin(ApplicationV2) {
 }
 
 // Reference: https://foundryvtt.wiki/en/development/api/applicationv2
-// Reference: https://foundryvtt.com/article/module-sub-types/
