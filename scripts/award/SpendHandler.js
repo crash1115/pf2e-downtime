@@ -4,6 +4,9 @@ import { ProjectHandler } from "../project/ProjectHandler.js";
 export class SpendHandler {
     
     static async spendDowntime(actor){
+
+        const UNIT = game.settings.get(MODULE, 'downtimeUnit').toLowerCase();
+        const UNIT_CAP = UNIT.charAt(0).toUpperCase() + UNIT.slice(1);
         
         const {DialogV2} = foundry.applications.api;
         const fields = foundry.data.fields;
@@ -19,7 +22,7 @@ export class SpendHandler {
             initial: 0,
             min: 0,
             max: maxDays,
-            label: "Days Spent"
+            label: `${UNIT_CAP}s Spent`
         });
 
         const projectSelect = new fields.StringField({
@@ -43,7 +46,7 @@ export class SpendHandler {
             {{formGroup progressField name="progress"}}
         `;
         
-        const content = `<p>Days Spent will automatically be subtracted from your current total. If you choose a project, its progress value will automatically increase by Progress Gained.</p>`
+        const content = `<p>${UNIT_CAP}s Spent will automatically be subtracted from your current total. If you choose a project, its progress value will automatically increase by Progress Gained.</p>`
                          + Handlebars.compile(template)({ daysField, projectSelect, progressField });
         
         const response = await DialogV2.confirm({
@@ -74,7 +77,7 @@ export class SpendHandler {
         await actor.setFlag(MODULE, "downtimeDays", newDowntimeDaysValue);
 
         if(!response.project){
-            const msg = `${actor.name} spent ${response.days} day(s).`
+            const msg = `${actor.name} spent ${response.days} ${UNIT}(s).`
             ui.notifications.notify(msg);
             return;
         }
@@ -85,7 +88,7 @@ export class SpendHandler {
         project.progress.current = newProgressValue;
         await actor.setFlag(MODULE, "projects", allProjects);
         
-        const msg = `${actor.name} spent ${response.days} day(s) on ${project.name}. Progress is now ${project.progress.current} / ${project.progress.max}.`
+        const msg = `${actor.name} spent ${response.days} ${UNIT}(s) on ${project.name}. Progress increased by ${response.progress} to ${project.progress.current} / ${project.progress.max}.`
         ui.notifications.notify(msg);
     }
 }
