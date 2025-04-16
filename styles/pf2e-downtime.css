@@ -1,74 +1,87 @@
-.pf2e-downtime div.pf2e-downtime-available {
+.pf2e-downtime div.pf2e-downtime-tab-content header {
+  border-bottom: 1px solid var(--color-border-divider);
+  color: var(--color-pf-primary);
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1;
+  font-family: var(--serif);
+}
+.pf2e-downtime div.pf2e-downtime-tab-content div.pf2e-downtime-available {
   display: flex;
 }
-.pf2e-downtime div.pf2e-downtime-available h4.pf2e-downtime-days-available {
-  flex: 10;
+.pf2e-downtime div.pf2e-downtime-tab-content div.pf2e-downtime-available h4.pf2e-downtime-days-available {
+  flex: 5;
 }
-.pf2e-downtime div.pf2e-downtime-available button.pf2e-downtime-award-downtime,
-.pf2e-downtime div.pf2e-downtime-available button.pf2e-downtime-spend-downtime {
-  flex: 4;
+.pf2e-downtime div.pf2e-downtime-tab-content div.pf2e-downtime-available button.pf2e-downtime-award-downtime,
+.pf2e-downtime div.pf2e-downtime-tab-content div.pf2e-downtime-available button.pf2e-downtime-spend-downtime {
+  flex: 2;
 }
-.pf2e-downtime ul.pf2e-downtime-projects-list {
+.pf2e-downtime div.pf2e-downtime-tab-content ul.pf2e-downtime-projects-list {
   padding-left: 0px;
 }
-.pf2e-downtime ul.pf2e-downtime-projects-list li.pf2e-downtime-project {
+.pf2e-downtime div.pf2e-downtime-tab-content ul.pf2e-downtime-projects-list li.pf2e-downtime-project {
   list-style-type: none;
   display: grid;
   grid-template-columns: min-content 200px auto 55px;
   height: 35px;
 }
-.pf2e-downtime ul.pf2e-downtime-projects-list li.pf2e-downtime-project:nth-child(odd) {
+.pf2e-downtime div.pf2e-downtime-tab-content ul.pf2e-downtime-projects-list li.pf2e-downtime-project:nth-child(odd) {
   background-color: rgba(120, 100, 82, 0.1);
 }
-.pf2e-downtime ul.pf2e-downtime-projects-list li.pf2e-downtime-project .pf2e-downtime-project-image {
+.pf2e-downtime div.pf2e-downtime-tab-content ul.pf2e-downtime-projects-list li.pf2e-downtime-project div.pf2e-downtime-project-image {
   margin-right: 5px;
   width: 33px;
   height: 33px;
   align-self: center;
 }
-.pf2e-downtime ul.pf2e-downtime-projects-list li.pf2e-downtime-project .pf2e-downtime-project-image img {
+.pf2e-downtime div.pf2e-downtime-tab-content ul.pf2e-downtime-projects-list li.pf2e-downtime-project div.pf2e-downtime-project-image img {
   border: 1px solid rgba(0, 0, 0, 0.7);
   max-width: 100%;
   max-height: 100%;
   border-radius: 2px;
 }
-.pf2e-downtime ul.pf2e-downtime-projects-list li.pf2e-downtime-project .pf2e-downtime-project-title {
+.pf2e-downtime div.pf2e-downtime-tab-content ul.pf2e-downtime-projects-list li.pf2e-downtime-project h4.pf2e-downtime-project-title {
   text-align: left;
   margin-bottom: 0;
   align-self: center;
 }
-.pf2e-downtime ul.pf2e-downtime-projects-list li.pf2e-downtime-project .pf2e-downtime-project-title.complete {
+.pf2e-downtime div.pf2e-downtime-tab-content ul.pf2e-downtime-projects-list li.pf2e-downtime-project h4.pf2e-downtime-project-title.pf2e-downtime-complete {
   text-decoration: line-through;
 }
-.pf2e-downtime ul.pf2e-downtime-projects-list li.pf2e-downtime-project .pf2e-downtime-project-progress {
+.pf2e-downtime div.pf2e-downtime-tab-content ul.pf2e-downtime-projects-list li.pf2e-downtime-project div.pf2e-downtime-project-progress {
   align-self: center;
 }
-.pf2e-downtime ul.pf2e-downtime-projects-list li.pf2e-downtime-project .pf2e-downtime-project-progress .bar {
-  border: 1px solid black;
+.pf2e-downtime div.pf2e-downtime-tab-content ul.pf2e-downtime-projects-list li.pf2e-downtime-project div.pf2e-downtime-project-progress div.pf2e-downtime-bar {
+  border: 1px solid var(--color-level-info-border);
+  background-color: rgba(47, 80, 132, 0.1);
   border-radius: 3px;
   height: 30px;
   display: flex;
+  overflow: hidden;
 }
-.pf2e-downtime ul.pf2e-downtime-projects-list li.pf2e-downtime-project .pf2e-downtime-project-progress .bar .label {
+.pf2e-downtime div.pf2e-downtime-tab-content ul.pf2e-downtime-projects-list li.pf2e-downtime-project div.pf2e-downtime-project-progress div.pf2e-downtime-bar div.pf2e-downtime-bar-label {
   position: fixed;
   margin-left: 5px;
   align-self: center;
+  z-index: 1;
 }
-.pf2e-downtime ul.pf2e-downtime-projects-list li.pf2e-downtime-project .pf2e-downtime-project-progress .bar .fill {
+.pf2e-downtime div.pf2e-downtime-tab-content ul.pf2e-downtime-projects-list li.pf2e-downtime-project div.pf2e-downtime-project-progress div.pf2e-downtime-bar div.pf2e-downtime-bar-fill {
   height: 100%;
-  opacity: 20%;
-  background-color: var(--color-pf-primary);
+  opacity: 50%;
+  background-color: var(--color-level-info);
+  border-right: 1px solid var(--color-level-info-border);
   border-radius: 3px;
 }
-.pf2e-downtime ul.pf2e-downtime-projects-list li.pf2e-downtime-project .pf2e-downtime-project-controls {
+.pf2e-downtime div.pf2e-downtime-tab-content ul.pf2e-downtime-projects-list li.pf2e-downtime-project div.pf2e-downtime-project-controls {
   align-self: center;
   display: flex;
   height: 100%;
   margin-left: 5px;
 }
-.pf2e-downtime ul.pf2e-downtime-projects-list li.pf2e-downtime-project .pf2e-downtime-project-controls button.pf2e-downtime-edit-project,
-.pf2e-downtime ul.pf2e-downtime-projects-list li.pf2e-downtime-project .pf2e-downtime-project-controls button.pf2e-downtime-delete-project,
-.pf2e-downtime ul.pf2e-downtime-projects-list li.pf2e-downtime-project .pf2e-downtime-project-controls button.pf2e-downtime-restart-project {
+.pf2e-downtime div.pf2e-downtime-tab-content ul.pf2e-downtime-projects-list li.pf2e-downtime-project div.pf2e-downtime-project-controls button.pf2e-downtime-edit-project,
+.pf2e-downtime div.pf2e-downtime-tab-content ul.pf2e-downtime-projects-list li.pf2e-downtime-project div.pf2e-downtime-project-controls button.pf2e-downtime-delete-project,
+.pf2e-downtime div.pf2e-downtime-tab-content ul.pf2e-downtime-projects-list li.pf2e-downtime-project div.pf2e-downtime-project-controls button.pf2e-downtime-restart-project {
   margin: 0;
   padding: 0;
   background: none;
@@ -78,28 +91,23 @@
   align-self: center;
   font-size: var(--font-size-12);
 }
-.pf2e-downtime ul.pf2e-downtime-projects-list li.pf2e-downtime-project .pf2e-downtime-project-controls button.pf2e-downtime-edit-project:hover,
-.pf2e-downtime ul.pf2e-downtime-projects-list li.pf2e-downtime-project .pf2e-downtime-project-controls button.pf2e-downtime-delete-project:hover,
-.pf2e-downtime ul.pf2e-downtime-projects-list li.pf2e-downtime-project .pf2e-downtime-project-controls button.pf2e-downtime-restart-project:hover {
+.pf2e-downtime div.pf2e-downtime-tab-content ul.pf2e-downtime-projects-list li.pf2e-downtime-project div.pf2e-downtime-project-controls button.pf2e-downtime-edit-project:hover,
+.pf2e-downtime div.pf2e-downtime-tab-content ul.pf2e-downtime-projects-list li.pf2e-downtime-project div.pf2e-downtime-project-controls button.pf2e-downtime-delete-project:hover,
+.pf2e-downtime div.pf2e-downtime-tab-content ul.pf2e-downtime-projects-list li.pf2e-downtime-project div.pf2e-downtime-project-controls button.pf2e-downtime-restart-project:hover {
   text-shadow: 0 0 8px var(--color-shadow-primary);
 }
 .pf2e-downtime .pf2e-downtime-project-editor header.pf2e-downtime-project-editor-header {
   border-bottom: 1px solid var(--color-border-divider);
   color: var(--color-pf-primary);
-  font: 600 var(--font-size-16)/1 var(--serif);
-  margin: var(--space-8) 0;
-}
-.pf2e-downtime .pf2e-downtime-project-editor .pf2e-downtime-help-icon {
-  flex: none;
-  margin-left: 10px;
-  opacity: 50%;
-}
-.pf2e-downtime .pf2e-downtime-project-editor .pf2e-downtime-help-icon:hover {
-  opacity: 100%;
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1;
+  font-family: var(--serif);
 }
 .pf2e-downtime .pf2e-downtime-project-editor div.form-group div.pf2e-downtime-help-icon {
   flex: none;
-  margin-left: 10px;
+  margin-left: 0.5rem;
   opacity: 50%;
 }
 .pf2e-downtime .pf2e-downtime-project-editor div.form-group div.pf2e-downtime-help-icon:hover {
