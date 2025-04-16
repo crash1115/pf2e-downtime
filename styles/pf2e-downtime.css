@@ -83,3 +83,25 @@
 .pf2e-downtime ul.pf2e-downtime-projects-list li.pf2e-downtime-project .pf2e-downtime-project-controls button.pf2e-downtime-restart-project:hover {
   text-shadow: 0 0 8px var(--color-shadow-primary);
 }
+.pf2e-downtime .pf2e-downtime-project-editor header.pf2e-downtime-project-editor-header {
+  border-bottom: 1px solid var(--color-border-divider);
+  color: var(--color-pf-primary);
+  font: 600 var(--font-size-16)/1 var(--serif);
+  margin: var(--space-8) 0;
+}
+.pf2e-downtime .pf2e-downtime-project-editor .pf2e-downtime-help-icon {
+  flex: none;
+  margin-left: 10px;
+  opacity: 50%;
+}
+.pf2e-downtime .pf2e-downtime-project-editor .pf2e-downtime-help-icon:hover {
+  opacity: 100%;
+}
+.pf2e-downtime .pf2e-downtime-project-editor div.form-group div.pf2e-downtime-help-icon {
+  flex: none;
+  margin-left: 10px;
+  opacity: 50%;
+}
+.pf2e-downtime .pf2e-downtime-project-editor div.form-group div.pf2e-downtime-help-icon:hover {
+  opacity: 100%;
+}

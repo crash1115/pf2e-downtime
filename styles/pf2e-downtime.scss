@@ -99,4 +99,38 @@
             
         }
     }
+
+    .pf2e-downtime-project-editor {
+
+        header.pf2e-downtime-project-editor-header{
+            border-bottom: 1px solid var(--color-border-divider);
+            color: var(--color-pf-primary);
+            font: 600 var(--font-size-16) / 1 var(--serif);
+            margin: var(--space-8) 0;
+        }
+    
+        .pf2e-downtime-help-icon {
+            flex:none;
+            margin-left: 10px;
+            opacity: 50%;
+    
+            &:hover {
+                opacity: 100%;
+            }
+        }
+    
+        div.form-group {
+            div.pf2e-downtime-help-icon {
+                flex:none;
+                margin-left: 10px;
+                opacity: 50%;
+        
+                &:hover {
+                    opacity: 100%;
+                }
+            }
+        }
+    }
+    
 }
+
