@@ -8,15 +8,15 @@ The goal of this module is to provide a place to keeping track of things that yo
 
 ## Features
 
-**Flexibility to Suit Your Game!**
+✨ **Flexibility to Suit Your Game!**
 - Customize how you measure downtime - weeks, days, noodles, whatever  - across your campaign.
 - Choose how you measure progress for each individual downtime project - gp for crafting, cats for petting, the sky's the limit!
 
-**Cool Progress Bars!**
+✨ **Cool Progress Bars!**
 - Everyone loves cool progress bars. They help you see at a glance how much progress you've made on your various tasks.
 - Color customization and theme support coming soon TM.
 
-**Dev Friendly!**
+✨ **Dev Friendly!**
 - The module exposes a public API that allows you to do some module related things in macros or your own modules. If you want. I guess.
 
 ---
