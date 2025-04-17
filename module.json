@@ -1,10 +1,10 @@
 {
   "id": "pf2e-downtime",
-  "title": "PF2e Downtime",
-  "version": "0.0.0",
-  "download": "",
-  "url": "",
-  "manifest": "",
+  "title": "PF2e Downtime Tracker",
+  "version": "0.0.2",
+  "download": "https://github.com/crash1115/pf2e-downtime/releases/download/0.0.2/module.zip",
+  "manifest": "https://github.com/crash1115/pf2e-downtime/releases/latest/download/module.json",
+  "url": "https://github.com/crash1115/pf2e-downtime",
   "compatibility": {
     "minimum": "12",
     "verified": "12"
