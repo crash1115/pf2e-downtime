@@ -2,6 +2,9 @@
 
 PF2e Downtime Tracker is a module for FoundryVTT's Pathfinder 2e system. It provides a simple interface that allows players to keep track of longer term downtime projects right from their character sheets.
 
+![image](https://github.com/user-attachments/assets/8d668372-9560-47f5-ba13-f4ecb175b2b2)
+
+
 # Features
 
 ## Flexibility to Suit Your Game
