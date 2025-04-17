@@ -7,7 +7,9 @@
             {{#if user.isGM}}
             <button class="pf2e-downtime-award-downtime" type="button" title="Award Dowmtime"><i class="fas fa-house"></i> Award</button>
             {{/if}}
+            {{#if actor.isOwner}}
             <button class="pf2e-downtime-spend-downtime" type="button" title="Spend Dowmtime"><i class="fas fa-rotate"></i> Spend</button>
+            {{/if}}
         </div>
         
         {{!-- DOWNTIME PROJECTS --}}
@@ -26,6 +28,7 @@
                         <div class="pf2e-downtime-bar-fill" style="width: {{pf2e-downtime-progress-percent this}}%"></div>
                     </div>
                 </div>
+                {{#if ../actor.isOwner}}
                 <div class="pf2e-downtime-project-controls">
                     <button class="pf2e-downtime-restart-project"
                             type="button"
@@ -46,10 +49,12 @@
                         <i class="fas fa-trash"></i>
                     </button>
                 </div>         
+                {{/if}} 
             </li>
             {{/each}}
         </ul>
-        
+        {{#if actor.isOwner}}
         <button class="pf2e-downtime-add-project" type="button" title="Add New Project"><i class="fas fa-plus"></i> New Project</button>
+        {{/if}}
     </div>
 </section>
