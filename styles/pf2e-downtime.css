@@ -113,3 +113,7 @@
 .pf2e-downtime .pf2e-downtime-project-editor div.form-group div.pf2e-downtime-help-icon:hover {
   opacity: 100%;
 }
+
+body.theme-dark .pf2e-downtime .pf2e-downtime-project-editor header.pf2e-downtime-project-editor-header {
+  color: var(--color-text-light-heading);
+}
