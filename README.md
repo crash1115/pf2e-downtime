@@ -19,6 +19,10 @@ The goal of this module is to provide a place to keeping track of things that yo
 ✨ **Dev Friendly!**
 - The module exposes a public API that allows you to do some module related things in macros or your own modules. If you want. I guess.
 
+## Installation
+
+Not currently available in the module browser, so you'll have to use the manifest URL instead: `https://github.com/crash1115/pf2e-downtime/releases/latest/download/module.json`
+
 ---
 
 # User Guide
