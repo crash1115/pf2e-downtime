@@ -1,7 +1,10 @@
 {
   "id": "pf2e-downtime",
   "title": "PF2e Downtime",
-  "version": "0.1.0",
+  "version": "0.0.0",
+  "download": "",
+  "url": "",
+  "manifest": "",
   "compatibility": {
     "minimum": "12",
     "verified": "12"
@@ -31,7 +34,7 @@
   ],
   "flags": {
     "hotReload": {
-        "extensions": ["hbs", "html", "css", "json"]
+        "extensions": ["hbs", "html", "css"]
     }
   }
 }
