@@ -24,24 +24,24 @@ The goal of this module is to provide a place to keeping track of things that yo
 # User Guide
 
 ## Changing Downtime Units
-The module allows you to specify what units downtime is measured in. These units will be displayed across the module wherever downtime is labeled, such as in the Award Downtime dialog and the Downtime tab of the character sheets. The GM can adjust this setting via **Game Settings > Configure Settings > PF2e Downtime Tracker > Downtime Unit**.
+The module allows you to specify what units downtime is measured in. These units will be displayed across the module wherever downtime is labeled, such as in the Award Downtime dialog and the Downtime tab of the character sheets. The GM can adjust this setting via `Game Settings > Configure Settings > PF2e Downtime Tracker > Downtime Unit`.
 
 ## Awarding Downtime
 Awarding downtime is not a mandatory feature for the module to work, but it helps with GM peace of mind, and helps players know how much time they have to work with. GM users can award downtime in two ways:
-- To award downtime to the whole party at once, open the party sheet and click the **Award Downtime** button in the sheet header.
-- To award downtime to an individual PC, open up their character sheet, go to the Downtime tab, and click the **Award** button.
+- To award downtime to the whole party at once, open the party sheet and click the `Award Downtime` button in the sheet header.
+- To award downtime to an individual PC, open up their character sheet, go to the Downtime tab, and click the `Award` button.
 
 ## Spending Downtime
-Players can see the amount of downtime they have available to them at the top of the Downtime tab of their character sheets. To spend that downtime, click the **Spend** button. This will present you with a prompt that asks how many days you'd like to spend, which project you'd like to work on, and how much progress on that project you can make during that time.
+Players can see the amount of downtime they have available to them at the top of the Downtime tab of their character sheets. To spend that downtime, click the `Spend` button. This will present you with a prompt that asks how many days you'd like to spend, which project you'd like to work on, and how much progress on that project you can make during that time.
 
 ## Creating Projects
-Players can create new downtime projects from the Downtime tab of their character sheets by pressing the **New Project** button. This will create a new project and open the Edit Project window, where they can configure the project with a name, image, progress information, and notes. There are handy help icons you can hover over to learn more about each field and what it does.
+Players can create new downtime projects from the Downtime tab of their character sheets by pressing the `New Project` button. This will create a new project and open the Edit Project window, where they can configure the project with a name, image, progress information, and notes. There are handy help icons you can hover over to learn more about each field and what it does.
 
 ## Managing Projects
 Players can manage their projects via the buttons to the right of each one:
-- **Restart Project** will reset the project's progress to zero, but leave everything else unchanged. Useful for projects you repeat often.
-- **Edit Project** will open up the Edit Project window and allow you to make changes to your project.
-- **Delete Project** will delete the project from your sheet.
+- `Restart Project` will reset the project's progress to zero, but leave everything else unchanged. Useful for projects you repeat often.
+- `Edit Project` will open up the Edit Project window and allow you to make changes to your project.
+- `Delete Project` will delete the project from your sheet.
 
 ---
 
