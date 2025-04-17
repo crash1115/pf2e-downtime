@@ -29,6 +29,8 @@ Hooks.on(`renderActorSheet`, (app, html, data) => {
    addTabToActorSheet(app, html, data).then(function(){
         if (app.activateDowntimeTab) {
             app._tabs[0].activate("pf2e-downtime");
+            const panelTitleSpan = html.find('.panel-title');
+            panelTitleSpan.text("Downtime");
         }
     });
 });
