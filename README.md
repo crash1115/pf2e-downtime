@@ -21,7 +21,8 @@ The goal of this module is to provide a place to keeping track of things that yo
 
 ## Installation
 
-Not currently available in the module browser, so you'll have to use the manifest URL instead: `https://github.com/crash1115/pf2e-downtime/releases/latest/download/module.json`
+Not currently available in the module browser, so you'll have to use the manifest URL instead:
+- `https://github.com/crash1115/pf2e-downtime/releases/latest/download/module.json`
 
 ---
 
