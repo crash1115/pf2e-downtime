@@ -25,7 +25,7 @@ Hooks.on(`init`, () => {
 });
 
 // Add Tab to Actor Sheets
-Hooks.on(`renderActorSheet`, (app, html, data) => {    
+Hooks.on(`renderCharacterSheetPF2e`, (app, html, data) => {    
    addTabToActorSheet(app, html, data).then(function(){
         if (app.activateDowntimeTab) {
             app._tabs[0].activate("pf2e-downtime");
