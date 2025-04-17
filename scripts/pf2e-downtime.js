@@ -46,12 +46,24 @@ async function addTabToActorSheet(app, html, data) {
         let downtimeTabBtn = $(`<a class="item" data-tab="pf2e-downtime" data-tooltip="Downtime" role="tab" aria-label="Downtime"><i class='fas fa-house'></i></a>`);
         manageTabsBtn.before(downtimeTabBtn);
 
+        // Make sure we have the data we need to populate the tab
         const unit = game.settings.get(MODULE, 'downtimeUnit').toLowerCase().charAt(0).toUpperCase() 
                    + game.settings.get(MODULE, 'downtimeUnit').toLowerCase().slice(1);
 
+        const actor = game.actors.get(data.actor._id);
+        const downtimeDaysOnActor = actor.getFlag(MODULE, 'downtimeDays');
+        if(!downtimeDaysOnActor){
+            await actor.setFlag(MODULE, 'downtimeDays', 0);
+        }
+        
+        const projectsOnActor = actor.getFlag(MODULE, 'projects');
+        if(!projectsOnActor){
+            await actor.setFlag(MODULE, 'projects', []);
+        }
+
         // Add content to tab
         let tabData = {
-            actor: data.actor,
+            actor: actor,
             unit: unit,
             user: data.user
         };
