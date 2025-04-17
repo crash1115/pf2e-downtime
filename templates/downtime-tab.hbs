@@ -19,7 +19,7 @@
                 <div class="pf2e-downtime-project-image">
                     <img src="{{this.img}}"></>
                 </div>
-                <h4 class="pf2e-downtime-project-title {{#if (eq this.progress.current this.progress.max)}}complete{{/if}}">{{this.name}}</h4>
+                <h4 class="pf2e-downtime-project-title {{#if (eq this.progress.current this.progress.max)}}pf2e-downtime-complete{{/if}}">{{this.name}}</h4>
                 <div class="pf2e-downtime-project-progress">
                     <div class="pf2e-downtime-bar">
                         <div class="pf2e-downtime-bar-label">{{this.progress.current}} / {{this.progress.max}} {{this.progress.label}}</div>
