@@ -146,6 +146,19 @@
             }
         }
     }
+
+    div.pf2e-downtime-chat-card-content {
+        span.bold {
+            font-weight: bold;
+        }
+
+        div.pf2e-downtime-chat-card-footer {
+            border-top: 1px solid var(--color-border-divider);
+            padding-top: 5px;
+            font-size:12px;
+        }
+    }
+    
     
 }
 

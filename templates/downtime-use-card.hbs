@@ -1,0 +1,15 @@
+<div class="pf2e-downtime">
+  <div class="pf2e-downtime-chat-card-content">
+    <p>{{actorName}} has spent downtime:</p>
+    <ul>
+      <li><span class="bold">Time Spent:</span> {{daysSpent}} {{downtimeUnit}}(s)</li>
+      {{#if project}}
+      <li><span class="bold">Project:</span> {{project.name}}</li>
+      <li><span class="bold">Progress:</span> {{project.oldProgress}} -> {{project.newProgress}} {{project.progressLabel}}</li>
+      {{/if}}
+    </ul>
+    <p>They have <span class="bold">{{daysRemaining}}</span> {{downtimeUnit}}(s) remaining.</p>
+    <div class="pf2e-downtime-chat-card-footer">PF2e Downtime</div>
+  </div>
+  
+</div>

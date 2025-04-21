@@ -81,17 +81,25 @@ export class SpendHandler {
             const msg = `${actor.name} spent ${response.days} ${UNIT}(s).`
             ui.notifications.notify(msg);
             if(game.settings.get(MODULE, 'sendUseToChat')){
-                const messageData = {
+                let chatHtml = await renderTemplate('modules/pf2e-downtime/templates/downtime-use-card.hbs', {
+                    actorName: actor.name,
+                    daysSpent: response.days,
+                    project: null,
+                    downtimeUnit: UNIT,
+                    daysRemaining: newDowntimeDaysValue
+                });
+                let msgData = {
                     speaker: getDocumentClass("ChatMessage").getSpeaker({ actor: actor }),
-                    content: msg
-                }
-                await ChatMessage.create(messageData);
+                    content: chatHtml
+                };
+                await ChatMessage.create(msgData);
             }
             return;
         }
         
         let allProjects = ProjectHandler.getAllProjectsForActor(actor);
         let project = ProjectHandler.getProjectForActor(response.project, actor);
+        const oldProgressValue = project.progress.current + 0;
         const newProgressValue = Math.min(project.progress.current + response.progress, project.progress.max);
         project.progress.current = newProgressValue;
         await actor.setFlag(MODULE, "projects", allProjects);
@@ -99,11 +107,23 @@ export class SpendHandler {
         const msg = `${actor.name} spent ${response.days} ${UNIT}(s) on ${project.name}. Progress increased by ${response.progress} to ${project.progress.current} / ${project.progress.max}.`
         ui.notifications.notify(msg);
         if(game.settings.get(MODULE, 'sendUseToChat')){
-            const messageData = {
+            let chatHtml = await renderTemplate('modules/pf2e-downtime/templates/downtime-use-card.hbs', {
+                actorName: actor.name,
+                daysSpent: response.days,
+                downtimeUnit: UNIT,
+                project: {
+                    name: project.name,
+                    oldProgress: oldProgressValue,
+                    newProgress: newProgressValue,
+                    progressLabel: project.progress.label
+                },                
+                daysRemaining: newDowntimeDaysValue
+            });
+            let msgData = {
                 speaker: getDocumentClass("ChatMessage").getSpeaker({ actor: actor }),
-                content: msg
-            }
-            await ChatMessage.create(messageData);
+                content: chatHtml
+            };
+            await ChatMessage.create(msgData);
         }
     }
 }
