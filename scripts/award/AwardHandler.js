@@ -13,13 +13,15 @@ export class AwardHandler {
 
         const {DialogV2} = foundry.applications.api;
         const fields = foundry.data.fields;
-        const parties = partyId ? [game.actors.get(partyId)] : game.actors.filter(p => p.type === "party");
+        const parties = game.actors.filter(p => p.type === "party");
         const choices = parties.reduce((choices, actor) => Object.assign(choices, {[actor.id]: actor.name}), {});
+        const initalSelection = partyId ? partyId : game.actors.party._id;
        
         const partySelect = new fields.StringField({
             blank: false, 
             required: true, 
             choices: choices,
+            initial: initalSelection,
             label: "Party"
         });
         
