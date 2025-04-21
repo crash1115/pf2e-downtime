@@ -80,6 +80,13 @@ export class SpendHandler {
         if(!response.project){
             const msg = `${actor.name} spent ${response.days} ${UNIT}(s).`
             ui.notifications.notify(msg);
+            if(game.settings.get(MODULE, 'sendUseToChat')){
+                const messageData = {
+                    speaker: getDocumentClass("ChatMessage").getSpeaker({ actor: actor }),
+                    content: msg
+                }
+                await ChatMessage.create(messageData);
+            }
             return;
         }
         
@@ -91,5 +98,12 @@ export class SpendHandler {
         
         const msg = `${actor.name} spent ${response.days} ${UNIT}(s) on ${project.name}. Progress increased by ${response.progress} to ${project.progress.current} / ${project.progress.max}.`
         ui.notifications.notify(msg);
+        if(game.settings.get(MODULE, 'sendUseToChat')){
+            const messageData = {
+                speaker: getDocumentClass("ChatMessage").getSpeaker({ actor: actor }),
+                content: msg
+            }
+            await ChatMessage.create(messageData);
+        }
     }
 }

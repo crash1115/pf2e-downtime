@@ -3,25 +3,19 @@ import { ProjectHandler } from "./project/ProjectHandler.js";
 import { AwardHandler } from "./award/AwardHandler.js";
 import { SpendHandler } from "./award/SpendHandler.js";
 import { pf2eDowntimeHelpers } from "./handlebars-helpers.js";
+import { registerSettings } from "./settings.js"
 
 export const MODULE = "pf2e-downtime";
 
 Hooks.on(`init`, () => {
     // Register Settings
-    game.settings.register(MODULE, "downtimeUnit", {
-        name: "Downtime Unit",
-        hint: "Define a unit for measure for downtime spent and given. Should be the singular form of the word, ex: hour, day, week, month, etc.",
-        scope: "world",
-        config: true,
-        default: "day",
-        type: String,
-    });
+    registerSettings();
 
     // Register Helpers
     Handlebars.registerHelper(pf2eDowntimeHelpers);
 
     // Provide the public api
-    game.modules.get(MODULE).api = PF2EDowntimeApi
+    game.modules.get(MODULE).api = PF2EDowntimeApi;
 });
 
 // Add Tab to Actor Sheets
