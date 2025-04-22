@@ -36,8 +36,7 @@ export class ProjectApp extends HandlebarsApplicationMixin(ApplicationV2) {
 
     async _prepareContext(options) {
         const context = await super._prepareContext(options);
-        context.actor = this.actor;
-        context.project = ProjectHandler.getProjectForActor(this.project.id, this.actor); // refreshes project data
+         context.project = ProjectHandler.getProjectForActor(this.project.id, this.actor); // refreshes project data
         return context;
     }
 
@@ -46,7 +45,7 @@ export class ProjectApp extends HandlebarsApplicationMixin(ApplicationV2) {
         when the actor is changed. By anyone. This effectively syncs it up so
         that if you have the app open when you spend downtime, the changes will
         carry over to the app, and vice versa. */
-        options.actor.apps[this.id] = this;
+        this.actor.apps[this.id] = this;
     }
 
     async _onClose(){
@@ -65,19 +64,10 @@ export class ProjectApp extends HandlebarsApplicationMixin(ApplicationV2) {
    */
     static async formHandler(event, form, formData) {
         const newProjectData = formData.object;
-
-        const actorId = newProjectData.owner;
-        const actor = game.actors.get(actorId);
-        if(!actor){
-            ui.notifications.error(`Could not find actor with id ${actorId}.`)
-            return;
-        }
-
-        const allProjects = ProjectHandler.getAllProjectsForActor(actor);
+        const actor = this.actor;
+        const allProjects = ProjectHandler.getAllProjectsForActor(this.actor);
         if(!allProjects) return;
         
-        let projectIndex = allProjects.findIndex(p => p.id == newProjectData.id);
-
         const updatedProject = {
             id: newProjectData.id,
             name: newProjectData.name,
@@ -89,8 +79,10 @@ export class ProjectApp extends HandlebarsApplicationMixin(ApplicationV2) {
                 label: newProjectData.label
             }
         };
+        const projectIndex = allProjects.findIndex(p => p.id == newProjectData.id);
         allProjects[projectIndex] = updatedProject;
 
         await actor.setFlag(MODULE, "projects", allProjects);
+        this.project = updatedProject;
     }
 }
