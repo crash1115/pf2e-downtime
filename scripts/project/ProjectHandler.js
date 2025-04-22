@@ -67,7 +67,7 @@ export class ProjectHandler {
 
     static openProject(project, actor){
         const data = {project: project, actor: actor};
-        new ProjectApp().render({force:true, context: data});
+        new ProjectApp(data).render({force:true});
     }
     
 }
