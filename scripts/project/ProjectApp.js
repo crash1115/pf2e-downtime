@@ -1,10 +1,10 @@
 import { ProjectHandler } from "./ProjectHandler.js";
 import { MODULE } from "../pf2e-downtime.js";
 
-const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api
+const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
 export class ProjectApp extends HandlebarsApplicationMixin(ApplicationV2) {
-
+    
     static DEFAULT_OPTIONS = {
         tag: "form",
         window: {
@@ -28,13 +28,44 @@ export class ProjectApp extends HandlebarsApplicationMixin(ApplicationV2) {
     }
 
     async _prepareContext(options) {
-        const context = {
-            counting: 1234,
-            actor: options.appData.actor,
-            project: options.appData.project
+        const context = await super._prepareContext(options);
+        if(options.context){
+            context.actor = options.context.actor;
+            context.project = options.context.project;
+        }
+        else if(!options.isFirstRender){ // should fire on re-renders when the actor
+            const actor = game.actors.get(this.projectData.actorId);
+            context.actor = actor;
+            context.project = ProjectHandler.getProjectForActor(this.projectData.id, actor);
         }
         return context;
     }
+
+    async _onRender(options){
+        /* We wanna keep this data on the app object itself so we can reference it later
+        This will help us for re-renders due to actor updates, and various shared project
+        functionality. */
+
+            this.projectData = {
+                id: options.project.id,
+                actorId: options.actor.id
+            };
+        
+        
+        /* By tying this application the actor, it forces the app to re-render
+        when the actor is changed. By anyone. This effectively syncs it up so
+        that if you have the app open when you spend downtime, the changes will
+        carry over to the app, and vice versa. */
+        options.actor.apps[this.id] = this;
+    }
+
+    async _onClose(){
+        // We tied the app to the actor, so we should to nuke it when we close it
+        const actor = game.actors.get(this.projectData.actorId);
+        delete actor.apps[this.id];
+    }
+
+    projectData = {};
 
     /**
    * Process form submission for the sheet
@@ -73,13 +104,5 @@ export class ProjectApp extends HandlebarsApplicationMixin(ApplicationV2) {
         allProjects[projectIndex] = updatedProject;
 
         await actor.setFlag(MODULE, "projects", allProjects);
-
-        // Re-render the sheet with the new project data context
-        // This is specifically done so Notes displays properly after update;
-        // Without this re-render, outside of edit mode, it always displays the original
-        // notes passed into the context. As of writing there are a few bugs with
-        // the prose-mirror input. Unsure if it's that, or me just missing something.
-        const newData = {project: updatedProject, actor:actor};
-        this.render({force:true, appData: newData});
     }
 }
