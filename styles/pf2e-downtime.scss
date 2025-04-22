@@ -1,9 +1,6 @@
-.pf2e-downtime {
-
-    // DOWNTIME TAB
-    
+// DOWNTIME TAB - PC SHEET
+.sheet.actor.character .pf2e-downtime {
     div.pf2e-downtime-tab-content {
-
         header {
             border-bottom: 1px solid var(--color-border-divider);
             color: var(--color-pf-primary);
@@ -15,7 +12,7 @@
         }
 
 
-        div.pf2e-downtime-available {
+        div.pf2e-downtime-management {
             display:flex;
             h4.pf2e-downtime-days-available{
                 flex: 5;
@@ -118,10 +115,132 @@
                 
             }
         }
-    }
-    
-    // PROJECT EDIT APPLICATION
+    }  
+}
 
+// DOWNTIME TAB - PARTY SHEET
+.sheet.actor.party .pf2e-downtime {
+    display: block;
+    padding: 0.5rem;
+    
+    div.pf2e-downtime-tab-content {
+        header {
+            border-bottom: 1px solid var(--color-border-divider);
+            color: var(--color-pf-primary);
+            margin: 0.5rem 0;
+            font-size: 1rem;
+            font-weight: 600;
+            line-height: 1;
+            font-family: var(--serif);
+        }
+
+
+        div.pf2e-downtime-management {
+            display:flex;
+    
+            button.pf2e-downtime-award-downtime,
+            button.pf2e-downtime-add-project {
+                flex: 1;
+            }
+        }
+        
+        ul.pf2e-downtime-projects-list{
+            padding-left: 0px;
+            
+            li.pf2e-downtime-project {
+                list-style-type: none;
+                display: grid;
+                grid-template-columns: min-content 200px auto 55px;
+                height: 35px;
+    
+                &:nth-child(odd){
+                    background-color: rgba(120, 100, 82, 0.1);
+                }
+                
+                div.pf2e-downtime-project-image {
+                    margin-right: 5px;
+                    width: 33px;
+                    height: 33px;
+                    align-self: center;
+    
+                    img {
+                        border:1px solid rgba(0, 0, 0, 0.7);
+                        max-width: 100%;
+                        max-height:100%;
+                        border-radius: 2px;
+                    }
+                }
+                
+                h4.pf2e-downtime-project-title {
+                    text-align: left;
+                    margin-bottom: 0;
+                    align-self: center;
+    
+                    &.pf2e-downtime-complete {
+                        text-decoration: line-through;
+                    }
+                }
+    
+                div.pf2e-downtime-project-progress {
+                    align-self: center;         
+
+                    div.pf2e-downtime-bar {
+                        border: 1px solid var(--color-level-info-border);
+                        background-color: rgba(47, 80, 132, 0.1);
+                        border-radius: 3px;
+                        height: 30px;
+                        display: flex;
+                        overflow: hidden;
+    
+                        div.pf2e-downtime-bar-label {
+                            position: fixed;
+                            margin-left: 5px;
+                            align-self: center;
+                            z-index: 1;
+                        }
+                        
+                        div.pf2e-downtime-bar-fill {
+                            height: 100%;
+                            opacity: 50%;
+                            background-color: var(--color-level-info);
+                            border-right: 1px solid var(--color-level-info-border);
+                            border-radius: 3px;
+                        }
+                    }
+                }
+    
+                div.pf2e-downtime-project-controls {
+                    align-self: center;
+                    display: flex;
+                    height: 100%;
+                    margin-left: 5px;
+    
+                    button.pf2e-downtime-edit-project,
+                    button.pf2e-downtime-delete-project,
+                    button.pf2e-downtime-restart-project {
+                        margin: 0;
+                        padding: 0;
+                        background: none;
+                        border: none;
+                        box-shadow: none;
+                        display: inline-grid;
+                        align-self: center;
+                        font-size: var(--font-size-12);
+    
+                        &:hover {
+                            text-shadow: 0 0 8px var(--color-shadow-primary);
+                        }
+                    }
+                }
+                
+            }
+        }
+    }  
+    
+}
+
+// PROJECT EDIT APPLICATION
+.application.pf2e-downtime {
     .pf2e-downtime-project-editor {
 
         header.pf2e-downtime-project-editor-header{
@@ -145,34 +264,32 @@
                 }
             }
         }
-    }
+    }   
+}
 
+// CHAT MESSAGES
+.chat-message .pf2e-downtime {
     div.pf2e-downtime-chat-card-content {
         span.bold {
             font-weight: bold;
         }
-
+    
         div.pf2e-downtime-chat-card-footer {
             border-top: 1px solid var(--color-border-divider);
             padding-top: 5px;
             font-size:12px;
         }
     }
-    
-    
 }
-
 
 // DARK MODE ADJUSTMENTS
 body.theme-dark {
-    .pf2e-downtime { 
-
-        // PROJECT EDIT APPLICATION
-
+    // PROJECT EDIT APPLICATION
+    .application.pf2e-downtime {
         .pf2e-downtime-project-editor {
             header.pf2e-downtime-project-editor-header{  
                 color: var(--color-text-light-heading);
             }
         }
-    }
+    }  
 }

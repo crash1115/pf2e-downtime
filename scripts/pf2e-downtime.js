@@ -20,7 +20,7 @@ Hooks.on(`init`, () => {
 
 // Add Tab to Actor Sheets
 Hooks.on(`renderCharacterSheetPF2e`, (app, html, data) => {    
-   addTabToActorSheet(app, html, data).then(function(){
+   addTabToPcSheet(app, html, data).then(function(){
         if (app.activateDowntimeTab) {
             app._tabs[0].activate("pf2e-downtime");
             const panelTitleSpan = html.find('.panel-title');
@@ -29,12 +29,16 @@ Hooks.on(`renderCharacterSheetPF2e`, (app, html, data) => {
     });
 });
 
-// Add Button to Party Sheets
-Hooks.on(`getPartySheetPF2eHeaderButtons`, (app, data) => {    
-    addButtonToPartySheetHeader(app, data);
+// Add Tab to Party Sheets
+Hooks.on(`renderPartySheetPF2e`, (app, html, data) => {    
+    addTabToPartySheet(app, html, data).then(function(){
+        if (app.activateDowntimeTab) {
+            app._tabs[0].activate("pf2e-downtime");
+        }
+    });
 });
 
-async function addTabToActorSheet(app, html, data) {
+async function addTabToPcSheet(app, html, data) {
     if(data.actor.type==="character"){
         // Add the tab
         let nav = html.find('.sheet-navigation[data-group="primary"]');
@@ -64,7 +68,7 @@ async function addTabToActorSheet(app, html, data) {
             user: data.user
         };
         let newSheetTab = html.find('.sheet-content');
-        let downtimeTabHtml = $(await renderTemplate('modules/pf2e-downtime/templates/downtime-tab.hbs', tabData));
+        let downtimeTabHtml = $(await renderTemplate('modules/pf2e-downtime/templates/downtime-tab-pc.hbs', tabData));
         newSheetTab.append(downtimeTabHtml);
 
         // Make the buttons all do things
@@ -82,10 +86,58 @@ async function addTabToActorSheet(app, html, data) {
     }
 }
 
+async function addTabToPartySheet(app, html, data) {
+    if(data.actor.type==="party"){
+        // Add the tab
+        let nav = html.find('nav.sub-nav');
+        let downtimeTabBtn = $(`<a data-tab="pf2e-downtime" aria-label="Downtime">Downtime</a>`);
+        nav.append(downtimeTabBtn);
+
+        // Make sure we have the data we need to populate the tab
+        const unit = game.settings.get(MODULE, 'downtimeUnit').toLowerCase().charAt(0).toUpperCase() 
+                   + game.settings.get(MODULE, 'downtimeUnit').toLowerCase().slice(1);
+
+        const actor = game.actors.get(data.actor._id);
+        const downtimeDaysOnActor = actor.getFlag(MODULE, 'downtimeDays');
+        if(!downtimeDaysOnActor){
+            await actor.setFlag(MODULE, 'downtimeDays', 0);
+        }
+        
+        const projectsOnActor = actor.getFlag(MODULE, 'projects');
+        if(!projectsOnActor){
+            await actor.setFlag(MODULE, 'projects', []);
+        }
+
+        // Add content to tab
+        let tabData = {
+            actor: actor,
+            unit: unit,
+            user: data.user
+        };
+        let newSheetTab = html.find('section.container');
+        let downtimeTabHtml = $(await renderTemplate('modules/pf2e-downtime/templates/downtime-tab-party.hbs', tabData));
+        newSheetTab.append(downtimeTabHtml);
+
+        // Make the buttons all do things
+        activateDowntimeTabListeners(data.actor,html);
+
+        // Set Downtime Tab as Active
+        html.find('nav.sub-nav a[data-tab="pf2e-downtime"]').click(ev => {
+            app.activateDowntimeTab = true;
+        });
+
+        // Unset Training Tab as Active
+        html.find('nav.sub-nav a:not(nav.sub-nav a[data-tab="pf2e-downtime"])').click(ev => {
+            app.activateDowntimeTab = false;
+        }); 
+    }
+}
+
 function activateDowntimeTabListeners(actorData, html){
     html.find('.pf2e-downtime-award-downtime').click(async (ev) => {
         const actor = game.actors.get(actorData._id);
-        AwardHandler.awardDowntimeToActor(actor);
+        if(actor.type === "character") AwardHandler.awardDowntimeToActor(actor);
+        if(actor.type === "party") AwardHandler.awardDowntimeToParty(actor.id);
     });
 
     html.find('.pf2e-downtime-spend-downtime').click(async (ev) => {
@@ -147,19 +199,4 @@ function activateDowntimeTabListeners(actorData, html){
             ui.notifications.warn("Project reset cancelled.");
         }
     });
-}
-
-async function addButtonToPartySheetHeader(app, data) {
-    if(!game.user.isGM) return;
-    const button = {
-        label: 'Award Downtime',
-        class: 'pf2e-downtime',
-        icon: 'fas fa-house',
-        onclick: callback
-    }
-    data.unshift(button);
-
-    function callback(){
-        AwardHandler.awardDowntimeToParty(app.actor._id);
-    }
 }
