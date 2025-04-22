@@ -3,18 +3,13 @@ import { ProjectApp } from "../project/ProjectApp.js";
 import { MODULE } from "../pf2e-downtime.js";
 
 export class ProjectHandler {
-
-    static createProject(){
-        const project = new Project;
-        return project;
-    }
     
     static async createProjectForActor(actor){
         if(!actor){
             ui.notifications.error(`Could not create project, invalid actor.`);
             return;
         }
-        const project = ProjectHandler.createProject();
+        const project = new Project(actor);
         const allProjects = ProjectHandler.getAllProjectsForActor(actor);
         allProjects.push(project);
         await actor.setFlag(MODULE, "projects", allProjects);
@@ -42,7 +37,6 @@ export class ProjectHandler {
         await actor.setFlag(MODULE, "projects", allProjects);
     }
 
-
     static getAllProjectsForActor(actor){
         if(!actor){
             ui.notifications.error(`Could not get projects, invalid actor.`);
@@ -63,6 +57,20 @@ export class ProjectHandler {
             ui.notifications.error(`Could not find project id ${projectId} on actor ${actor.name}.`);
         } 
         return project || null;
+    }
+
+    static getSharedProjectsForActor(actor){
+        if(!actor){
+            ui.notifications.error(`Could not get projects, invalid actor.`);
+            return;
+        }
+        const parties = Array.from(actor.parties);
+        let sharedProjects = [];
+        for (const party of parties){
+            const projects = ProjectHandler.getAllProjectsForActor(party);
+            sharedProjects = sharedProjects.concat(projects);
+        }
+        return sharedProjects;
     }
 
     static openProject(project, actor){

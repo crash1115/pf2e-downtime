@@ -28,14 +28,6 @@ export class PF2EDowntimeApi {
     }
 
     /**
-   * Creates a new Project object
-   * @returns {Project}
-   */
-    static createProject(){
-        return ProjectHandler.createProject();
-    }
-
-    /**
    * Creates a new Project with default values and assigns it to the given actor
    * @param {string} actorId                      The id of the actor to give the project to
    * @returns {Promise<Project>}
@@ -46,7 +38,7 @@ export class PF2EDowntimeApi {
             ui.notifications.error(`Could not find actor with id ${actorId}.`)
             return;
         }
-        return ProjectHandler.createProjectForActor(actor)
+        return ProjectHandler.createProjectForActor(actor);
     }
 
     /**

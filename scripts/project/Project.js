@@ -1,6 +1,7 @@
 export default class Project {
-    constructor(){
+    constructor(actor){
         this.id = foundry.utils.randomID();
+        this.owner = actor.id;
         this.name = "New Project";
         this.img = "icons/commodities/tech/blueprint.webp";
         this.note = "";

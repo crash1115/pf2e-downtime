@@ -10,8 +10,11 @@ export class SpendHandler {
         
         const {DialogV2} = foundry.applications.api;
         const fields = foundry.data.fields;
+
         const projects = actor.getFlag(MODULE,"projects") || [];
-        const unfinished = projects.filter(p => p.progress.current < p.progress.max) || [];
+        const sharedProjects = ProjectHandler.getSharedProjectsForActor(actor) || [];
+        const combined = projects.concat(sharedProjects);
+        const unfinished = combined.filter(p => p.progress.current < p.progress.max) || [];
         const choices = unfinished.reduce((choices, project) => Object.assign(choices, {[project.id]: project.name}), {});
         const maxDays = actor.getFlag(MODULE, "downtimeDays");
                
@@ -78,8 +81,6 @@ export class SpendHandler {
         await actor.setFlag(MODULE, "downtimeDays", newDowntimeDaysValue);
 
         if(!response.project){
-            const msg = `${actor.name} spent ${response.days} ${UNIT}(s).`
-            ui.notifications.notify(msg);
             if(game.settings.get(MODULE, 'sendUseToChat')){
                 let chatHtml = await renderTemplate('modules/pf2e-downtime/templates/downtime-use-card.hbs', {
                     actorName: actor.name,
@@ -96,16 +97,25 @@ export class SpendHandler {
             }
             return;
         }
-        
-        let allProjects = ProjectHandler.getAllProjectsForActor(actor);
-        let project = ProjectHandler.getProjectForActor(response.project, actor);
+
+        const selectedProject = combined.filter(p => p.id === response.project)[0];
+        const projectOwner = game.actors.get(selectedProject.projectOwner);
+
+        const userCanUpdate = projectOwner.isOwner;
+
+        let allProjects = ProjectHandler.getAllProjectsForActor(projectOwner);
+        let project = ProjectHandler.getProjectForActor(response.project, projectOwner);
         const oldProgressValue = project.progress.current + 0;
         const newProgressValue = Math.min(project.progress.current + response.progress, project.progress.max);
         project.progress.current = newProgressValue;
-        await actor.setFlag(MODULE, "projects", allProjects);
         
-        const msg = `${actor.name} spent ${response.days} ${UNIT}(s) on ${project.name}. Progress increased by ${response.progress} to ${project.progress.current} / ${project.progress.max}.`
-        ui.notifications.notify(msg);
+        if(userCanUpdate){
+            await projectOwner.setFlag(MODULE, "projects", allProjects);
+        } else {
+            //TODO: Make the GM handle it with sockets
+            ui.notifications.error("You don't have permission to update the actor that owns the selected project. Ask the GM or other owner to update its progress manually.", {permanent: true});
+        }
+        
         if(game.settings.get(MODULE, 'sendUseToChat')){
             let chatHtml = await renderTemplate('modules/pf2e-downtime/templates/downtime-use-card.hbs', {
                 actorName: actor.name,

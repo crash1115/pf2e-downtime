@@ -70,6 +70,7 @@ export class ProjectApp extends HandlebarsApplicationMixin(ApplicationV2) {
         
         const updatedProject = {
             id: newProjectData.id,
+            owner: newProjectData.owner,
             name: newProjectData.name,
             img: newProjectData.img,
             note: newProjectData.note,
