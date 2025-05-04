@@ -56,16 +56,21 @@ async function addTabToPcSheet(app, html, data) {
             await actor.setFlag(MODULE, 'downtimeDays', 0);
         }
         
+        // Get all the projects for the actor. If there aren't any, make them.
         const projectsOnActor = actor.getFlag(MODULE, 'projects');
         if(!projectsOnActor){
             await actor.setFlag(MODULE, 'projects', []);
         }
 
+        // Format the project data so it's in the structure we want
+        const projectData = ProjectHandler.formatProjectsForSheet(projectsOnActor);
+
         // Add content to tab
         let tabData = {
             actor: actor,
             unit: unit,
-            user: data.user
+            user: data.user,
+            projectData: projectData
         };
         let newSheetTab = html.find('.sheet-content');
         let downtimeTabHtml = $(await renderTemplate('modules/pf2e-downtime/templates/downtime-tab-pc.hbs', tabData));
@@ -108,11 +113,15 @@ async function addTabToPartySheet(app, html, data) {
             await actor.setFlag(MODULE, 'projects', []);
         }
 
+        // Format the project data so it's in the structure we want
+        const projectData = ProjectHandler.formatProjectsForSheet(projectsOnActor);
+
         // Add content to tab
         let tabData = {
             actor: actor,
             unit: unit,
-            user: data.user
+            user: data.user,
+            projectData: projectData
         };
         let newSheetTab = html.find('section.container');
         let downtimeTabHtml = $(await renderTemplate('modules/pf2e-downtime/templates/downtime-tab-party.hbs', tabData));

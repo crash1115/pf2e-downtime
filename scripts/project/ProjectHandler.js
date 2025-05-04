@@ -77,5 +77,32 @@ export class ProjectHandler {
         const data = {project: project, actor: actor};
         new ProjectApp(data).render({force:true});
     }
+
+    static formatProjectsForSheet(projects){
+         
+        // Get list of displayable projects
+        const visibleProjects = projects.filter(p => !p.gmOnly || (game.user.isGM && p.gmOnly));
+
+        // Get list of categories
+        let categoryNames = [];
+        for(var i=0; i<visibleProjects.length; i++){
+            const project = visibleProjects[i];
+            const category = project.category || "Downtime Projects";
+            if(!categoryNames.includes(category)) categoryNames.push(category);
+        }
+
+        // Build data structure
+        let projectData = [];
+
+        for(var j=0; j<categoryNames.length; j++){
+            const name = categoryNames[j];
+            let entry = {};
+            entry.categoryName = name;
+            entry.projects = visibleProjects.filter ( p => (p.category === name) || (p.category === "" && name === "Downtime Projects") );
+            projectData.push(entry);
+        }
+
+        return projectData;
+    }
     
 }

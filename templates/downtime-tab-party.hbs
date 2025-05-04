@@ -9,10 +9,11 @@
         {{/if}}
         
         {{!-- DOWNTIME PROJECTS --}}
-        <header>Party Downtime Projects</header>
+        {{#each projectData}}
+        <header>{{this.categoryName}}</header>
         
         <ul class="pf2e-downtime-projects-list">
-            {{#each actor.flags.pf2e-downtime.projects}}
+            {{#each this.projects}}
             <li class="pf2e-downtime-project">
                 <div class="pf2e-downtime-project-image">
                     <img src="{{this.img}}"></>
@@ -24,7 +25,7 @@
                         <div class="pf2e-downtime-bar-fill" style="width: {{pf2e-downtime-progress-percent this}}%"></div>
                     </div>
                 </div>
-                {{#if ../actor.isOwner}}
+                {{#if ../../actor.isOwner}}
                 <div class="pf2e-downtime-project-controls">
                     <button class="pf2e-downtime-restart-project"
                             type="button"
@@ -49,6 +50,8 @@
             </li>
             {{/each}}
         </ul>
+        {{/each}}
+
         {{#if actor.isOwner}}
         <button class="pf2e-downtime-add-project" type="button" title="Add New Project"><i class="fas fa-plus"></i> New Shared Project</button>
         {{/if}}
