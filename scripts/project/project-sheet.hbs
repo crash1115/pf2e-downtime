@@ -102,7 +102,7 @@
     <div class="form-group">
         <label>GM Only</label>
         <div class="form-fields">
-            <input type="checkbox" name="gmOnly" {{#if project.gmOnly}}checked{{/if}}>
+            <input type="checkbox" name="gmOnly" {{#if project.gmOnly}}checked{{/if}} {{#unless user.isGM}}disabled{{/unless}}>
         </div>
         <div class="pf2e-downtime-help-icon"
              data-tooltip="When checked, only the GM will be able to see this project on the downtime tabs and the Spend downtime dropdown.">
