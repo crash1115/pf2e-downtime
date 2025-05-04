@@ -59,9 +59,10 @@
   height: 30px;
   display: flex;
   overflow: hidden;
+  position: relative;
 }
 .sheet.actor.character .pf2e-downtime div.pf2e-downtime-tab-content ul.pf2e-downtime-projects-list li.pf2e-downtime-project div.pf2e-downtime-project-progress div.pf2e-downtime-bar div.pf2e-downtime-bar-label {
-  position: fixed;
+  position: absolute;
   margin-left: 5px;
   align-self: center;
   z-index: 1;
@@ -159,9 +160,10 @@
   height: 30px;
   display: flex;
   overflow: hidden;
+  position: relative;
 }
 .sheet.actor.party .pf2e-downtime div.pf2e-downtime-tab-content ul.pf2e-downtime-projects-list li.pf2e-downtime-project div.pf2e-downtime-project-progress div.pf2e-downtime-bar div.pf2e-downtime-bar-label {
-  position: fixed;
+  position: absolute;
   margin-left: 5px;
   align-self: center;
   z-index: 1;

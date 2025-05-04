@@ -71,9 +71,10 @@
                         height: 30px;
                         display: flex;
                         overflow: hidden;
+                        position: relative;
     
                         div.pf2e-downtime-bar-label {
-                            position: fixed;
+                            position: absolute;
                             margin-left: 5px;
                             align-self: center;
                             z-index: 1;
@@ -191,9 +192,10 @@
                         height: 30px;
                         display: flex;
                         overflow: hidden;
+                        position: relative;
     
                         div.pf2e-downtime-bar-label {
-                            position: fixed;
+                            position: absolute;
                             margin-left: 5px;
                             align-self: center;
                             z-index: 1;
