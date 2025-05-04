@@ -37,6 +37,17 @@
         </div>
     </div>
 
+    <div class="form-group">
+        <label>Category</label>
+        <div class="form-fields">
+            <input type="text" name="category" value="{{project.category}}">
+        </div>
+        <div class="pf2e-downtime-help-icon"
+             data-tooltip="The project will display on the downtime tab under a header with this name.">
+            <i class="fas fa-circle-question"></i>
+        </div>
+    </div>
+
     <header class="pf2e-downtime-project-editor-header">Project Progress</header>
 
     <div class="form-group">
@@ -82,6 +93,30 @@
         </div>
         <div class="pf2e-downtime-help-icon"
              data-tooltip="Any notes for the project to help you keep track of any other aspects not otherwise covered. They're only displayed here.">
+            <i class="fas fa-circle-question"></i>
+        </div>
+    </div>
+
+    <header class="pf2e-downtime-project-editor-header">Options</header>
+
+    <div class="form-group">
+        <label>GM Only</label>
+        <div class="form-fields">
+            <input type="checkbox" name="gmOnly" {{#if project.gmOnly}}checked{{/if}}>
+        </div>
+        <div class="pf2e-downtime-help-icon"
+             data-tooltip="When checked, only the GM will be able to see this project on the downtime tabs and the Spend downtime dropdown.">
+            <i class="fas fa-circle-question"></i>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Info Only</label>
+        <div class="form-fields">
+            <input type="checkbox" name="infoOnly" {{#if project.infoOnly}}checked{{/if}}>
+        </div>
+        <div class="pf2e-downtime-help-icon"
+             data-tooltip="When checked, this project will not be visible in the Spend downtime menu, but can be edited as normal.">
             <i class="fas fa-circle-question"></i>
         </div>
     </div>

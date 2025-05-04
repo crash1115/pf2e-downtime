@@ -73,12 +73,15 @@ export class ProjectApp extends HandlebarsApplicationMixin(ApplicationV2) {
             owner: newProjectData.owner,
             name: newProjectData.name,
             img: newProjectData.img,
-            note: newProjectData.note,
+            category: newProjectData.category,
             progress: {
                 current: newProjectData.current,
                 max: newProjectData.max,
                 label: newProjectData.label
-            }
+            },
+            note: newProjectData.note,
+            gmOnly: newProjectData.gmOnly,
+            infoOnly: newProjectData.infoOnly
         };
         const projectIndex = allProjects.findIndex(p => p.id == newProjectData.id);
         allProjects[projectIndex] = updatedProject;
