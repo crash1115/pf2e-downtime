@@ -45,9 +45,15 @@
   text-align: left;
   margin-bottom: 0;
   align-self: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .sheet.actor.character .pf2e-downtime div.pf2e-downtime-tab-content ul.pf2e-downtime-projects-list li.pf2e-downtime-project h4.pf2e-downtime-project-title.pf2e-downtime-complete {
   text-decoration: line-through;
+}
+.sheet.actor.character .pf2e-downtime div.pf2e-downtime-tab-content ul.pf2e-downtime-projects-list li.pf2e-downtime-project h4.pf2e-downtime-project-title i {
+  opacity: 50%;
 }
 .sheet.actor.character .pf2e-downtime div.pf2e-downtime-tab-content ul.pf2e-downtime-projects-list li.pf2e-downtime-project div.pf2e-downtime-project-progress {
   align-self: center;
@@ -124,7 +130,7 @@
 .sheet.actor.party .pf2e-downtime div.pf2e-downtime-tab-content ul.pf2e-downtime-projects-list li.pf2e-downtime-project {
   list-style-type: none;
   display: grid;
-  grid-template-columns: min-content 200px auto 55px;
+  grid-template-columns: min-content 300px auto 55px;
   height: 35px;
 }
 .sheet.actor.party .pf2e-downtime div.pf2e-downtime-tab-content ul.pf2e-downtime-projects-list li.pf2e-downtime-project:nth-child(odd) {
@@ -146,9 +152,15 @@
   text-align: left;
   margin-bottom: 0;
   align-self: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .sheet.actor.party .pf2e-downtime div.pf2e-downtime-tab-content ul.pf2e-downtime-projects-list li.pf2e-downtime-project h4.pf2e-downtime-project-title.pf2e-downtime-complete {
   text-decoration: line-through;
+}
+.sheet.actor.party .pf2e-downtime div.pf2e-downtime-tab-content ul.pf2e-downtime-projects-list li.pf2e-downtime-project h4.pf2e-downtime-project-title i {
+  opacity: 50%;
 }
 .sheet.actor.party .pf2e-downtime div.pf2e-downtime-tab-content ul.pf2e-downtime-projects-list li.pf2e-downtime-project div.pf2e-downtime-project-progress {
   align-self: center;
