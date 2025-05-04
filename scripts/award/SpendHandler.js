@@ -13,8 +13,9 @@ export class SpendHandler {
 
         const projects = actor.getFlag(MODULE,"projects") || [];
         const sharedProjects = ProjectHandler.getSharedProjectsForActor(actor) || [];
-        const combined = projects.concat(sharedProjects);
-        const unfinished = combined.filter(p => p.progress.current < p.progress.max) || [];
+        const combined = projects.concat(sharedProjects);   // All projects available to the actor
+        const visible = combined.filter (p => !p.gmOnly || p.gmOnly && game.user.isGM) || [];   // Projects that are visible to the user
+        const unfinished = visible.filter(p => p.progress.current < p.progress.max && !p.infoOnly) || [];  // Projects that the actor can work on
         const choices = unfinished.reduce((choices, project) => Object.assign(choices, {[project.id]: `${project.name} (${project.progress.current} / ${project.progress.max})`}), {});
         const maxDays = actor.getFlag(MODULE, "downtimeDays");
                
