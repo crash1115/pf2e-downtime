@@ -4,7 +4,7 @@ export default class Project {
         this.owner = actor.id;
         this.name = "New Project";
         this.img = "icons/commodities/tech/blueprint.webp";
-        this.category = undefined;
+        this.category = "Downtime Projects";
         this.progress = {
             current: 0,
             max: 1,
