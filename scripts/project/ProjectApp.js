@@ -68,6 +68,14 @@ export class ProjectApp extends HandlebarsApplicationMixin(ApplicationV2) {
         const actor = this.actor;
         const allProjects = ProjectHandler.getAllProjectsForActor(this.actor);
         if(!allProjects) return;
+
+        let newMax = newProjectData.max;
+        if (newMax < 0) newMax = 0;
+
+        let newCurrentProgress = newProjectData.current;
+        if (newCurrentProgress < 0) newCurrentProgress = 0;
+        if (newCurrentProgress > newMax) newCurrentProgress = newMax;
+
         
         const updatedProject = {
             id: newProjectData.id,
@@ -76,8 +84,8 @@ export class ProjectApp extends HandlebarsApplicationMixin(ApplicationV2) {
             img: newProjectData.img,
             category: newProjectData.category,
             progress: {
-                current: newProjectData.current,
-                max: newProjectData.max,
+                current: newCurrentProgress,
+                max: newMax,
                 label: newProjectData.label
             },
             note: newProjectData.note,
