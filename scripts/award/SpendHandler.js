@@ -15,7 +15,7 @@ export class SpendHandler {
         const sharedProjects = ProjectHandler.getSharedProjectsForActor(actor) || [];
         const combined = projects.concat(sharedProjects);
         const unfinished = combined.filter(p => p.progress.current < p.progress.max) || [];
-        const choices = unfinished.reduce((choices, project) => Object.assign(choices, {[project.id]: project.name}), {});
+        const choices = unfinished.reduce((choices, project) => Object.assign(choices, {[project.id]: `${project.name} (${project.progress.current} / ${project.progress.max})`}), {});
         const maxDays = actor.getFlag(MODULE, "downtimeDays");
                
         const daysField = new fields.NumberField({
