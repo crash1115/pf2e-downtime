@@ -47,6 +47,11 @@ export class ProjectApp extends HandlebarsApplicationMixin(ApplicationV2) {
         that if you have the app open when you spend downtime, the changes will
         carry over to the app, and vice versa. */
         this.actor.apps[this.id] = this;
+
+        if(!ProjectHandler.userCanView(options.project)){
+            ui.notifications.warn("You don't have permission to view this project.");
+            this.close();
+        }
     }
 
     async _onClose(){
@@ -64,6 +69,11 @@ export class ProjectApp extends HandlebarsApplicationMixin(ApplicationV2) {
    * @returns {Promise<void>}
    */
     static async formHandler(event, form, formData) {
+        if(!ProjectHandler.userCanEdit(this.project)){ 
+            ui.notifications.warn("You don't have permission to update this project.");
+            this.close();
+            return;
+        }
         const newProjectData = formData.object;
         const actor = this.actor;
         const allProjects = ProjectHandler.getAllProjectsForActor(this.actor);
@@ -75,7 +85,6 @@ export class ProjectApp extends HandlebarsApplicationMixin(ApplicationV2) {
         let newCurrentProgress = newProjectData.current;
         if (newCurrentProgress < 0) newCurrentProgress = 0;
         if (newCurrentProgress > newMax) newCurrentProgress = newMax;
-
         
         const updatedProject = {
             id: newProjectData.id,
@@ -89,9 +98,11 @@ export class ProjectApp extends HandlebarsApplicationMixin(ApplicationV2) {
                 label: newProjectData.label
             },
             note: newProjectData.note,
-            gmOnly: newProjectData.gmOnly,
-            infoOnly: newProjectData.infoOnly
+            playerCanView: newProjectData.playerCanView,
+            playerCanEdit: newProjectData.playerCanEdit,
+            disableSpend: newProjectData.disableSpend,
         };
+        
         const projectIndex = allProjects.findIndex(p => p.id == newProjectData.id);
         allProjects[projectIndex] = updatedProject;
 

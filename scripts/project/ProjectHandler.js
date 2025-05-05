@@ -81,7 +81,7 @@ export class ProjectHandler {
     static formatProjectsForSheet(projects){
          
         // Get list of displayable projects
-        const visibleProjects = projects.filter(p => !p.gmOnly || (game.user.isGM && p.gmOnly));
+        const visibleProjects = projects.filter(p => ProjectHandler.userCanView(p));
 
         // Get list of categories
         let categoryNames = [];
@@ -103,6 +103,16 @@ export class ProjectHandler {
         }
 
         return projectData;
+    }
+
+    static userCanEdit(project){
+        if(game.user.isGM) return true;
+        return project.playerCanEdit;
+    }
+
+    static userCanView(project){
+        if(game.user.isGM) return true;
+        return project.playerCanView;
     }
     
 }

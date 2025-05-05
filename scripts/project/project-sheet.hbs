@@ -11,14 +11,14 @@
         </div>
     </div>
 
-    <input type="text" name="owner" value="{{project.owner}}" hidden>
+    <input type="text" name="owner" value="{{project.owner}}" hidden readonly>
 
     <header class="pf2e-downtime-project-editor-header">General Info</header>   
 
     <div class="form-group">
         <label>Project Name</label>
         <div class="form-fields">
-            <input type="text" name="name" value="{{project.name}}">
+            <input type="text" name="name" value="{{project.name}}" {{#unless (pf2e-downtime-user-can-edit project)}}readonly{{/unless}}>
         </div>
         <div class="pf2e-downtime-help-icon"
              data-tooltip="The name of the project that displays on the Downtime tab of the character sheet.">
@@ -29,7 +29,7 @@
     <div class="form-group">
         <label>Image</label>
         <div class="form-fields">
-            <file-picker name="img" type="image" value="{{project.img}}"></file-picker>
+            <file-picker name="img" type="image" value="{{project.img}}" {{#unless (pf2e-downtime-user-can-edit project)}}readonly{{/unless}}></file-picker>
         </div>
         <div class="pf2e-downtime-help-icon"
              data-tooltip="An image that displays next to the project's name on the Downtime tab of the character sheet.">
@@ -40,7 +40,7 @@
     <div class="form-group">
         <label>Category</label>
         <div class="form-fields">
-            <input type="text" name="category" value="{{project.category}}">
+            <input type="text" name="category" value="{{project.category}}" {{#unless (pf2e-downtime-user-can-edit project)}}readonly{{/unless}}>
         </div>
         <div class="pf2e-downtime-help-icon"
              data-tooltip="The project will display on the Downtime tab under a header with this name.">
@@ -53,7 +53,7 @@
     <div class="form-group">
         <label>Current Progress</label>
         <div class="form-fields">
-            <input type="number" name="current" value="{{project.progress.current}}" max="{{project.progress.max}}" step="1">
+            <input type="number" name="current" value="{{project.progress.current}}" max="{{project.progress.max}}" step="1" {{#unless (pf2e-downtime-user-can-edit project)}}readonly{{/unless}}>
         </div>
         <div class="pf2e-downtime-help-icon"
              data-tooltip="The current progress of the project. When this equals the max progress, the project will be considered complete.">
@@ -64,7 +64,7 @@
     <div class="form-group">
         <label>Max Progress</label>
         <div class="form-fields">
-            <input type="number" name="max" value="{{project.progress.max}}" step="1">
+            <input type="number" name="max" value="{{project.progress.max}}" step="1" {{#unless (pf2e-downtime-user-can-edit project)}}readonly{{/unless}}>
         </div>
         <div class="pf2e-downtime-help-icon"
              data-tooltip="The maximum progress for the project. When the current progress reaches this threshold, the project will be considered complete.">
@@ -75,7 +75,7 @@
     <div class="form-group">
         <label>Progress Label</label>
         <div class="form-fields">
-            <input type="text" name="label" value="{{project.progress.label}}">
+            <input type="text" name="label" value="{{project.progress.label}}" {{#unless (pf2e-downtime-user-can-edit project)}}readonly{{/unless}}>
         </div>
         <div class="pf2e-downtime-help-icon"
              data-tooltip="The unit of measure to display alongside progress. This could be anything: days, months, gp, etc. Leave blank for no units.">
@@ -87,7 +87,7 @@
 
     <div class="form-group">
         <div class="form-fields">
-            <prose-mirror name="note" value="{{project.note}}" toggled="true">
+            <prose-mirror name="note" value="{{project.note}}" toggled="true" {{#unless (pf2e-downtime-user-can-edit project)}}readonly{{/unless}}>
                 {{{project.note}}}
             </prose-mirror>
         </div>
@@ -100,23 +100,34 @@
     <header class="pf2e-downtime-project-editor-header">Options</header>
 
     <div class="form-group">
-        <label>GM Only</label>
+        <label>Players Can View</label>
         <div class="form-fields">
-            <input type="checkbox" name="gmOnly" {{#if project.gmOnly}}checked{{/if}} {{#unless user.isGM}}disabled{{/unless}}>
+            <input type="checkbox" name="playerCanView" {{checked project.playerCanView}} {{#unless user.isGM}}readonly{{/unless}}>
         </div>
         <div class="pf2e-downtime-help-icon"
-             data-tooltip="When checked, only the GM will be able to see this project on the Downtime tabs and the Spend downtime dropdown.">
+             data-tooltip="When checked, this project will be visible to players on the Downtime tab. They won't see it in the Spend Downtime dropdown unless they also have Edit access.">
             <i class="fas fa-circle-question"></i>
         </div>
     </div>
 
     <div class="form-group">
-        <label>Info Only</label>
+        <label>Players Can Edit</label>
         <div class="form-fields">
-            <input type="checkbox" name="infoOnly" {{#if project.infoOnly}}checked{{/if}}>
+            <input type="checkbox" name="playerCanEdit" {{checked project.playerCanEdit}} {{#unless user.isGM}}readonly{{/unless}}> 
         </div>
         <div class="pf2e-downtime-help-icon"
-             data-tooltip="When checked, this project will not be visible in the Spend downtime menu, but can be edited as normal.">
+             data-tooltip="When checked, this project will be editable by players and visible to them in the Spend Downtime dropdown.">
+            <i class="fas fa-circle-question"></i>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Disable Downtime Spending</label>
+        <div class="form-fields">
+            <input type="checkbox" name="disableSpend" {{checked project.disableSpend}} {{#unless (pf2e-downtime-user-can-edit project)}}readonly{{/unless}}>
+        </div>
+        <div class="pf2e-downtime-help-icon"
+             data-tooltip="When checked, this project won't appear in the Spend Downtime dropdown, even if the player has edit access.">
             <i class="fas fa-circle-question"></i>
         </div>
     </div>

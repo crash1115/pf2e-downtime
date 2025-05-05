@@ -4,7 +4,6 @@ import { ProjectHandler } from "../project/ProjectHandler.js";
 export class SpendHandler {
     
     static async spendDowntime(actor){
-
         const UNIT = game.settings.get(MODULE, 'downtimeUnit').toLowerCase();
         const UNIT_CAP = UNIT.charAt(0).toUpperCase() + UNIT.slice(1);
         
@@ -14,9 +13,11 @@ export class SpendHandler {
         const projects = actor.getFlag(MODULE,"projects") || [];
         const sharedProjects = ProjectHandler.getSharedProjectsForActor(actor) || [];
         const combined = projects.concat(sharedProjects);   // All projects available to the actor
-        const visible = combined.filter (p => !p.gmOnly || p.gmOnly && game.user.isGM) || [];   // Projects that are visible to the user
-        const unfinished = visible.filter(p => p.progress.current < p.progress.max && !p.infoOnly) || [];  // Projects that the actor can work on
-        const choices = unfinished.reduce((choices, project) => Object.assign(choices, {[project.id]: `${project.name} (${project.progress.current} / ${project.progress.max})`}), {});
+        const visible = combined.filter (p => ProjectHandler.userCanView(p)) || [];   // Projects that are visible to the user
+        const editable = visible.filter (p => ProjectHandler.userCanEdit(p)) || []; // Projects the user can edit
+        const unfinished = editable.filter(p => p.progress.current < p.progress.max) || []; // Projects tht aren't finished
+        const canSpend = unfinished.filter(p => !p.disableSpend) || []; // Projects that can have downtime spent on them
+        const choices = canSpend.reduce((choices, project) => Object.assign(choices, {[project.id]: `${project.name} (${project.progress.current} / ${project.progress.max})`}), {});
         const maxDays = actor.getFlag(MODULE, "downtimeDays");
                
         const daysField = new fields.NumberField({
@@ -100,10 +101,9 @@ export class SpendHandler {
         }
 
         const selectedProject = combined.filter(p => p.id === response.project)[0];
-        const projectOwner = game.actors.get(selectedProject.projectOwner);
-
-        const userCanUpdate = projectOwner.isOwner;
-
+        const projectOwner = game.actors.get(selectedProject.owner);
+        const userCanUpdate = projectOwner.isOwner && !selectedProject.disableSpend && ProjectHandler.userCanEdit(selectedProject);
+        
         let allProjects = ProjectHandler.getAllProjectsForActor(projectOwner);
         let project = ProjectHandler.getProjectForActor(response.project, projectOwner);
         const oldProgressValue = project.progress.current + 0;
@@ -113,8 +113,7 @@ export class SpendHandler {
         if(userCanUpdate){
             await projectOwner.setFlag(MODULE, "projects", allProjects);
         } else {
-            //TODO: Make the GM handle it with sockets
-            ui.notifications.error("You don't have permission to update the actor that owns the selected project. Ask the GM or other owner to update its progress manually.", {permanent: true});
+            ui.notifications.warn("You don't have permission to update the selected project. Ask the GM or other owner to update its progress manually.", {permanent: true});
         }
         
         if(game.settings.get(MODULE, 'sendUseToChat')){

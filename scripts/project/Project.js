@@ -11,7 +11,8 @@ export default class Project {
             label: ""
         };
         this.note = "";
-        this.gmOnly = false;
-        this.infoOnly = false;
+        this.playerCanEdit = true;
+        this.playerCanView = true;
+        this.disableSpend = false;
     }
 }
