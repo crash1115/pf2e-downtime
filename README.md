@@ -8,16 +8,17 @@ The goal of this module is to provide a place to keeping track of things that yo
 
 ## Features
 
-✨ **Flexibility to Suit Your Game!**
+✨ **Flexibility to Suit Your Game**
 - Customize how you measure downtime - weeks, days, noodles, whatever  - across your campaign.
 - Choose how you measure progress for each individual downtime project - gp for crafting, cats for petting, the sky's the limit!
+- Control how much access the players have over each activity with view and edit permissions - hide your evil plans, show them their reputation but don't let them mess with it, or let them go nuts - up to you!
 
-✨ **Cool Progress Bars!**
+✨ **Cool Progress Bars**
 - Everyone loves cool progress bars. They help you see at a glance how much progress you've made on your various tasks.
 - Color customization and theme support coming soon TM.
 
-✨ **Dev Friendly!**
-- The module exposes a public API that allows you to do some module related things in macros or your own modules. If you want. I guess.
+✨ **Individual and Shared/Party Project Tracking**
+- Create and track projects for your character individually, or set up shared projects with your party for everyone to work on and contribute to.
 
 ## Installation
 
@@ -33,8 +34,9 @@ The module allows you to specify what units downtime is measured in. These units
 
 ## Awarding Downtime
 Awarding downtime is not a mandatory feature for the module to work, but it helps with GM peace of mind, and helps players know how much time they have to work with. GM users can award downtime in two ways:
-- To award downtime to the whole party at once, open the party sheet and click the `Award Downtime` button in the sheet header.
+- To award downtime to the whole party at once, open the party sheet, go to the Downtime tab, and click the `Award Downtime to Party sheet` button.
 - To award downtime to an individual PC, open up their character sheet, go to the Downtime tab, and click the `Award` button.
+When you award downtime in this way, it will be displayed on the Downtime tab of the character sheet for each PC.
 
 ## Spending Downtime
 Players can see the amount of downtime they have available to them at the top of the Downtime tab of their character sheets. To spend that downtime, click the `Spend` button. This will present you with a prompt that asks how many days you'd like to spend, which project you'd like to work on, and how much progress on that project you can make during that time.
@@ -48,10 +50,13 @@ Players can manage their projects via the buttons to the right of each one:
 - `Edit Project` will open up the Edit Project window and allow you to make changes to your project.
 - `Delete Project` will delete the project from your sheet.
 
+## Creating Shared Projects
+You can create Shared Projects from the Downtime tab of the party sheet by pressing the `New Shared Project` button. This creates a project that will appear on the party sheet's Downtime tab. These projects can be selected by any member of the party when they Spend downtime. Their available downtime will be reduced as normal, but the project's progress value will only increase automatically if the player has ownership permissions for the party actor that owns the shared project. If not, they'll be prompted to ask the GM or owner to make the update for them.
+
 ---
 
 # Public API
-Foundry reccomends modules expose their API in a specific way, so I did that. You can access the API like so:
+Foundry recommends modules expose their API in a specific way, so I did that. You can access the API like so:
 ```js
 const api = game.modules.get('pf2e-downtime')?.api;
 ```
