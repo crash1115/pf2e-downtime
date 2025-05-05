@@ -70,7 +70,8 @@ async function addTabToPcSheet(app, html, data) {
             actor: actor,
             unit: unit,
             user: data.user,
-            projectData: projectData
+            projectData: projectData,
+            showDefaultHeader: projectsOnActor.length <= 0
         };
         let newSheetTab = html.find('.sheet-content');
         let downtimeTabHtml = $(await renderTemplate('modules/pf2e-downtime/templates/downtime-tab-pc.hbs', tabData));
@@ -121,7 +122,8 @@ async function addTabToPartySheet(app, html, data) {
             actor: actor,
             unit: unit,
             user: data.user,
-            projectData: projectData
+            projectData: projectData,
+            showDefaultHeader: projectsOnActor.length <= 0
         };
         let newSheetTab = html.find('section.container');
         let downtimeTabHtml = $(await renderTemplate('modules/pf2e-downtime/templates/downtime-tab-party.hbs', tabData));
