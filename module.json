@@ -1,40 +1,44 @@
 {
   "id": "pf2e-downtime",
   "title": "PF2e Downtime Tracker",
-  "version": "0.0.2",
-  "download": "https://github.com/crash1115/pf2e-downtime/releases/download/0.0.2/module.zip",
+  "version": "0.1.0",
+  "download": "https://github.com/crash1115/pf2e-downtime/releases/download/0.1.0/module.zip",
   "manifest": "https://github.com/crash1115/pf2e-downtime/releases/latest/download/module.json",
   "url": "https://github.com/crash1115/pf2e-downtime",
   "compatibility": {
-    "minimum": "12",
-    "verified": "12"
+      "minimum": "12",
+      "verified": "12"
   },
   "relationships": {
-    "systems": [
-      {
-        "id": "pf2e",
-        "type": "system",
-        "compatibility": {}
-      }
-    ]
+      "systems": [
+          {
+              "id": "pf2e",
+              "type": "system",
+              "compatibility": {}
+          }
+      ]
   },
   "authors": [
-    {
-      "name": "CRASH1115",
-      "url": "https://github.com/crash1115",
-      "discord": "crash1115",
-      "flags": {}
-    }
+      {
+          "name": "CRASH1115",
+          "url": "https://github.com/crash1115",
+          "discord": "crash1115",
+          "flags": {}
+      }
   ],
   "esmodules": [
-    "./scripts/pf2e-downtime.js"
+      "./scripts/pf2e-downtime.js"
   ],
   "styles": [
-    "./styles/pf2e-downtime.css"
+      "./styles/pf2e-downtime.css"
   ],
   "flags": {
-    "hotReload": {
-        "extensions": ["hbs", "html", "css"]
-    }
+      "hotReload": {
+          "extensions": [
+              "hbs",
+              "html",
+              "css"
+          ]
+      }
   }
 }
