@@ -57,8 +57,9 @@ async function addTabToPcSheet(app, html, data) {
         }
         
         // Get all the projects for the actor. If there aren't any, make them.
-        const projectsOnActor = actor.getFlag(MODULE, 'projects');
+        let projectsOnActor = actor.getFlag(MODULE, 'projects');
         if(!projectsOnActor){
+            projectsOnActor = [];
             await actor.setFlag(MODULE, 'projects', []);
         }
 
@@ -109,8 +110,9 @@ async function addTabToPartySheet(app, html, data) {
             await actor.setFlag(MODULE, 'downtimeDays', 0);
         }
         
-        const projectsOnActor = actor.getFlag(MODULE, 'projects');
+        let projectsOnActor = actor.getFlag(MODULE, 'projects');
         if(!projectsOnActor){
+            projectsOnActor = [];
             await actor.setFlag(MODULE, 'projects', []);
         }
 
