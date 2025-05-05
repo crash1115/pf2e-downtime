@@ -15,6 +15,10 @@ export class PF2EDowntimeApi {
             ui.notifications.error(`Could not find actor with id ${actorId}.`)
             return;
         }
+        if(actor.type != "character"){
+            ui.notifications.error(`Can't award downtime to non-PC actors. ${actor.name} is type ${actor.type}.`)
+            return;
+        }
         return AwardHandler.awardDowntimeToActor(actor);
     }
 
@@ -95,6 +99,10 @@ export class PF2EDowntimeApi {
         const actor = game.actors.get(actorId);
         if(!actor){
             ui.notifications.error(`Could not find actor with id ${actorId}.`)
+            return;
+        }
+        if(actor.type != "character"){
+            ui.notifications.error(`Can't spend downtime for non-PC actors. ${actor.name} is type ${actor.type}.`)
             return;
         }
         return SpendHandler.spendDowntime(actor);
