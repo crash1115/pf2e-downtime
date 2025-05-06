@@ -4,7 +4,8 @@ PF2e Downtime Tracker is a module for FoundryVTT's Pathfinder 2e system. It prov
 
 The goal of this module is to provide a place to keeping track of things that you'd normally have to keep track of in a journal or notes, right on your character sheet. The goal of this module is *not* to automate downtime activities; automation inherently reduces flexibility, and my intention is for this to be as flexible and sub-system agnostic as possible.
 
-![image](https://github.com/user-attachments/assets/8d668372-9560-47f5-ba13-f4ecb175b2b2)
+![image](https://github.com/user-attachments/assets/66027237-76ab-4ad4-9a4f-9f8d897ec96e)
+
 
 ## Features
 
@@ -22,12 +23,12 @@ The goal of this module is to provide a place to keeping track of things that yo
 
 ## Compatibility
 
-⚠️ **PF2E Dorako UI**
-- This module has partial support for Dorako UI
+⚠️ **PF2e Dorako UI**
+- This module has partial support for PF2e Dorako UI
 - It's usable in light and dark mode across all sheet themes, but the colors of elements in the Downtime tab don't always match up with Dorako's theme colors
 - I have no plans to maintain support for this module
 
-❌ **PF2E Pathfinder Ui v3**
+❌ **PF2e Pathfinder Ui v3**
 - This module has no support with PF2e Pathfhinder Ui v3
 - It's technically functional, but it looks like garbage almost universally
 - I have no plans to support this module further
