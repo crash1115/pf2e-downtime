@@ -13,7 +13,7 @@ export class ProjectApp extends HandlebarsApplicationMixin(ApplicationV2) {
 
     static DEFAULT_OPTIONS = {
         tag: "form",
-        classes: ["pf2e-downtime"],
+        classes: ["pf2e-downtime-edit-app"],
         position: {
             width: 610
         },

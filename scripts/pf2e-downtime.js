@@ -176,7 +176,7 @@ function activateDowntimeTabListeners(actorData, html){
         const projectId = ev.currentTarget.getAttribute('data-pf2e-downtime-project-id');
         const project = ProjectHandler.getProjectForActor(projectId, actor);
         const confirmed = await foundry.applications.api.DialogV2.confirm({ 
-            classes: ["pf2e-downtime"],
+            classes: ["pf2e-downtime-delete"],
             window: {
                 title: "Confirm Project Deletion"
             },
@@ -197,7 +197,7 @@ function activateDowntimeTabListeners(actorData, html){
         const projectId = ev.currentTarget.getAttribute('data-pf2e-downtime-project-id');
         const project = ProjectHandler.getProjectForActor(projectId, actor);
         const confirmed = await foundry.applications.api.DialogV2.confirm({ 
-            classes: ["pf2e-downtime"],
+            classes: ["pf2e-downtime-restart"],
             window: {
                 title: "Confirm Project Restart"
             },

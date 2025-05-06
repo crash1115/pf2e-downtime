@@ -55,7 +55,7 @@ export class SpendHandler {
                          + Handlebars.compile(template)({ daysField, projectSelect, progressField });
         
         const response = await DialogV2.confirm({
-            classes: ["pf2e-downtime"],
+            classes: ["pf2e-downtime-spend"],
             window: {
                 title: `Spend Downtime - ${actor.name}`,
                 icon: "fa-solid fa-rotate",

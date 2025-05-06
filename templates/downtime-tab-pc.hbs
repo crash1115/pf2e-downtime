@@ -1,7 +1,7 @@
 <section class="tab pf2e-downtime major" data-group="primary" data-tab="pf2e-downtime">
     <div class="pf2e-downtime-tab-content">
         {{!-- DOWNTIME MANAGEMENT  --}}
-        <header>Available Downtime</header>   
+        <header class="pf2e-downtime-header">Available Downtime</header>   
         <div class="pf2e-downtime-management">
             <h4 class="pf2e-downtime-days-available">{{actor.flags.pf2e-downtime.downtimeDays}} {{unit}}(s)</h4>
             {{#if user.isGM}}
@@ -13,9 +13,9 @@
         </div>
         
         {{!-- DOWNTIME PROJECTS --}}
-        {{#if showDefaultHeader}}<header>Downtime Projects</header>{{/if}}
+        {{#if showDefaultHeader}}<header class="pf2e-downtime-header">Downtime Projects</header>{{/if}}
         {{#each projectData}}
-        <header>{{this.categoryName}}</header>
+        <header class="pf2e-downtime-header">{{this.categoryName}}</header>
         
         <ul class="pf2e-downtime-projects-list">
             {{#each this.projects}}

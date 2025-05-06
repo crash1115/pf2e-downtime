@@ -42,7 +42,7 @@ export class AwardHandler {
                          + Handlebars.compile(template)({ partySelect, daysField });
         
         const response = await DialogV2.confirm({
-            classes: ["pf2e-downtime"],
+            classes: ["pf2e-downtime-award"],
             window: {
                 title: "Award Downtime - Party",
                 icon: "fa-solid fa-house",

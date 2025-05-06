@@ -2,16 +2,16 @@
     <div class="pf2e-downtime-tab-content">
         {{!-- DOWNTIME MANAGEMENT  --}}
         {{#if user.isGM}}
-        <header>Manage Downtime</header>   
+        <header class="pf2e-downtime-header">Manage Downtime</header>   
         <div class="pf2e-downtime-management">
             <button class="pf2e-downtime-award-downtime" type="button" title="Award Dowmtime"><i class="fas fa-house"></i> Award Downtime to Party</button>
         </div>
         {{/if}}
         
         {{!-- DOWNTIME PROJECTS --}}
-        {{#if showDefaultHeader}}<header>Downtime Projects</header>{{/if}}
+        {{#if showDefaultHeader}}<header class="pf2e-downtime-header">Downtime Projects</header>{{/if}}
         {{#each projectData}}
-        <header>{{this.categoryName}}</header>
+        <header class="pf2e-downtime-header">{{this.categoryName}}</header>
         
         <ul class="pf2e-downtime-projects-list">
             {{#each this.projects}}
