@@ -1,9 +1,109 @@
+// Default Theme
+:root {
+    // Applications
+    --pf2e-downtime-app-header-text-color: #5e0000;
+    --pf2e-downtime-app-header-border-color: #baa991;
+    
+    // Chat Cards
+    --pf2e-downtime-chat-footer-border-color: #baa991;
+
+    // Shared
+    --pf2e-downtime-project-img-border-color: rgba(0, 0, 0, 0.7);
+
+    // PC Sheet
+    --pf2e-downtime-pc-header-text-color: #5e0000;
+    --pf2e-downtime-pc-header-border-color: #baa991;
+
+    --pf2e-downtime-pc-row-highlight-color: rgba(120, 100, 82, 0.1);
+
+    --pf2e-downtime-pc-project-name-color: #191813;
+
+    --pf2e-downtime-pc-control-color:#191813;
+    --pf2e-downtime-pc-control-color-hover:#191813;
+    --pf2e-downtime-pc-control-shadow-color-hover: #ff0000;
+
+    --pf2e-downtime-pc-bar-border-color: #5c87b9;
+    --pf2e-downtime-pc-bar-bg-color: rgba(47, 80, 132, 0.1);
+    --pf2e-downtime-pc-bar-fill-color: #59a1f6;
+    --pf2e-downtime-pc-bar-text-color: #191813;
+
+    --pf2e-downtime-pc-button-border-color: rgb(13.8359375, 18.6484375, 63.1640625);
+    --pf2e-downtime-pc-button-text-color: #f5efe0;
+    --pf2e-downtime-pc-button-text-color-hover: white;
+    --pf2e-downtime-pc-button-bg-color: #171f69;
+    --pf2e-downtime-pc-button-bg-color-hover: #28328f;
+
+    // Party Sheet
+    --pf2e-downtime-party-header-text-color: #124321;
+    --pf2e-downtime-party-header-border-color: #baa991;
+
+    --pf2e-downtime-party-row-highlight-color: rgba(120, 100, 82, 0.1);
+
+    --pf2e-downtime-party-project-name-color: #191813;
+
+    --pf2e-downtime-party-control-color:#191813;
+    --pf2e-downtime-party-control-color-hover:#191813;
+    --pf2e-downtime-party-control-shadow-color-hover: #ff0000;
+
+    --pf2e-downtime-party-bar-border-color: #1b8f23;
+    --pf2e-downtime-party-bar-bg-color-: rgba(47, 80, 132, 0.1);
+    --pf2e-downtime-party-bar-fill-color: #26b231;
+    --pf2e-downtime-party-bar-text-color: #191813;
+
+    --pf2e-downtime-party-button-border-color: #2a7a42;
+    --pf2e-downtime-party-button-text-color: #f5efe0;
+    --pf2e-downtime-party-button-text-color-hover: white;
+    --pf2e-downtime-party-button-bg-color: #124321;
+    --pf2e-downtime-party-button-bg-color-hover: #1e6d36;    
+}
+
+// Dark Mode Theme Overrides
+body.theme-dark {
+    .pf2e-downtime-edit-app {
+        --pf2e-downtime-app-header-text-color: #c9c7b8;
+    }
+}
+
+// Dorako
+[data-theme][data-color-scheme=light] {
+    &.pf2e-downtime-edit-app {
+        --pf2e-downtime-app-header-text-color: #5e0000;
+    }
+}
+
+[data-theme][data-color-scheme=dark] {
+    &.pf2e-downtime-edit-app {
+        --pf2e-downtime-app-header-text-color: #c9c7b8;
+    }
+
+    --pf2e-downtime-pc-header-text-color: #efe6d8;
+    --pf2e-downtime-pc-header-border-color: #e9d7a1;
+    --pf2e-downtime-pc-project-name-color:#efe6d8;
+    --pf2e-downtime-pc-control-color:#efe6d8;
+    --pf2e-downtime-pc-control-color-hover:#efe6d8;
+    --pf2e-downtime-pc-control-shadow-color-hover: none;
+    --pf2e-downtime-pc-bar-text-color: white;
+    --pf2e-downtime-pc-button-bg-color: #28328f;
+    --pf2e-downtime-pc-button-bg-color-hover: #171f69 ;
+
+
+    --pf2e-downtime-party-header-text-color: #efe6d8;
+    --pf2e-downtime-party-header-border-color: #e9d7a1;
+    --pf2e-downtime-party-project-name-color: #efe6d8;
+    --pf2e-downtime-party-control-color:#efe6d8;
+    --pf2e-downtime-party-control-color-hover:#efe6d8;
+    --pf2e-downtime-party-control-shadow-color-hover: none;
+    --pf2e-downtime-party-bar-text-color: white;
+    --pf2e-downtime-party-button-bg-color: #1e6d36;
+    --pf2e-downtime-party-button-bg-color-hover: #124321;   
+}
+
 // DOWNTIME TAB - PC SHEET
 .sheet.actor.character .pf2e-downtime {
     div.pf2e-downtime-tab-content {
         header {
-            border-bottom: 1px solid var(--color-border-divider);
-            color: var(--color-pf-primary);
+            border-bottom: 1px solid var(--pf2e-downtime-pc-header-border-color);
+            color: var(--pf2e-downtime-pc-header-text-color);
             margin: 0.5rem 0;
             font-size: 1rem;
             font-weight: 600;
@@ -21,6 +121,16 @@
             button.pf2e-downtime-award-downtime,
             button.pf2e-downtime-spend-downtime  {
                 flex: 2;
+                color: var(--pf2e-downtime-pc-button-text-color);
+                background-color:var(--pf2e-downtime-pc-button-bg-color);
+                border-color: var(--pf2e-downtime-pc-button-border-color);
+
+                &:hover {
+                    color: var(--pf2e-downtime-pc-button-text-color-hover);
+                    background-color:var(--pf2e-downtime-pc-button-bg-color-hover);
+                    box-shadow: none;
+                }
+
             }
         }
         
@@ -34,7 +144,7 @@
                 height: 35px;
     
                 &:nth-child(odd){
-                    background-color: rgba(120, 100, 82, 0.1);
+                    background-color: var(--pf2e-downtime-pc-row-highlight-color);
                 }
                 
                 div.pf2e-downtime-project-image {
@@ -44,7 +154,7 @@
                     align-self: center;
     
                     img {
-                        border:1px solid rgba(0, 0, 0, 0.7);
+                        border:1px solid var( --pf2e-downtime-project-img-border-color);
                         max-width: 100%;
                         max-height:100%;
                         border-radius: 2px;
@@ -58,6 +168,7 @@
                     white-space: nowrap;
                     overflow: hidden;
                     text-overflow: ellipsis;
+                    color: var(--pf2e-downtime-pc-project-name-color);
                         
                     &.pf2e-downtime-complete {
                         text-decoration: line-through;
@@ -72,8 +183,8 @@
                     align-self: center;         
 
                     div.pf2e-downtime-bar {
-                        border: 1px solid var(--color-level-info-border);
-                        background-color: rgba(47, 80, 132, 0.1);
+                        border: 1px solid var(--pf2e-downtime-pc-bar-border-color);
+                        background-color: var(--pf2e-downtime-pc-bar-bg-color);
                         border-radius: 3px;
                         height: 30px;
                         display: flex;
@@ -85,13 +196,14 @@
                             margin-left: 5px;
                             align-self: center;
                             z-index: 1;
+                            color: var(--pf2e-downtime-pc-bar-text-color);
                         }
                         
                         div.pf2e-downtime-bar-fill {
                             height: 100%;
                             opacity: 50%;
-                            background-color: var(--color-level-info);
-                            border-right: 1px solid var(--color-level-info-border);
+                            background-color: var(--pf2e-downtime-pc-bar-fill-color);
+                            border-right: 1px solid var(--pf2e-downtime-pc-bar-border-color);
                             border-radius: 3px;
                         }
                     }
@@ -114,13 +226,27 @@
                         display: inline-grid;
                         align-self: center;
                         font-size: var(--font-size-12);
+                        color: var(--pf2e-downtime-pc-control-color);
     
                         &:hover {
-                            text-shadow: 0 0 8px var(--color-shadow-primary);
+                            color: var(--pf2e-downtime-pc-control-color-hover);
+                            text-shadow: 0 0 8px var(--pf2e-downtime-pc-control-shadow-color-hover);
                         }
                     }
                 }
                 
+            }
+        }
+        button.pf2e-downtime-add-project {
+            flex: 1;
+            color: var(--pf2e-downtime-pc-button-text-color);
+            background-color: var(--pf2e-downtime-pc-button-bg-color);
+            border-color: var(--pf2e-downtime-pc-button-border-color);
+
+            &:hover {
+                color: var(--pf2e-downtime-pc-button-text-color-hover);
+                background-color: var(--pf2e-downtime-pc-button-bg-color-hover);
+                box-shadow: none;
             }
         }
     }  
@@ -133,8 +259,8 @@
     
     div.pf2e-downtime-tab-content {
         header {
-            border-bottom: 1px solid var(--color-border-divider);
-            color: var(--color-pf-primary);
+            border-bottom: 1px solid var(--pf2e-downtime-party-header-border-color);
+            color: var(--pf2e-downtime-party-header-text-color);
             margin: 0.5rem 0;
             font-size: 1rem;
             font-weight: 600;
@@ -146,9 +272,17 @@
         div.pf2e-downtime-management {
             display:flex;
     
-            button.pf2e-downtime-award-downtime,
-            button.pf2e-downtime-add-project {
+            button.pf2e-downtime-award-downtime {
                 flex: 1;
+                color: var(--pf2e-downtime-party-button-text-color);
+                background-color: var(--pf2e-downtime-party-button-bg-color);
+                border-color: var(--pf2e-downtime-party-button-border-color);
+
+                &:hover {
+                    color: var(--pf2e-downtime-party-button-text-color-hover);
+                    background-color: var(--pf2e-downtime-party-button-bg-color-hover);
+                    box-shadow: none;
+                }
             }
         }
         
@@ -162,9 +296,10 @@
                 height: 35px;
     
                 &:nth-child(odd){
-                    background-color: rgba(120, 100, 82, 0.1);
+                    background-color: var(--pf2e-downtime-party-row-highlight-color);
                 }
-                
+
+
                 div.pf2e-downtime-project-image {
                     margin-right: 5px;
                     width: 33px;
@@ -172,7 +307,7 @@
                     align-self: center;
     
                     img {
-                        border:1px solid rgba(0, 0, 0, 0.7);
+                        border:1px solid var(--pf2e-downtime-project-img-border-color);
                         max-width: 100%;
                         max-height:100%;
                         border-radius: 2px;
@@ -186,6 +321,7 @@
                     white-space: nowrap;
                     overflow: hidden;
                     text-overflow: ellipsis;
+                    color: var(--pf2e-downtime-party-project-name-color);
                         
                     &.pf2e-downtime-complete {
                         text-decoration: line-through;
@@ -200,8 +336,8 @@
                     align-self: center;         
 
                     div.pf2e-downtime-bar {
-                        border: 1px solid var(--color-level-info-border);
-                        background-color: rgba(47, 80, 132, 0.1);
+                        border: 1px solid var(--pf2e-downtime-party-bar-border-color);
+                        background-color: var(--pf2e-downtime-party-bar-bg-color);
                         border-radius: 3px;
                         height: 30px;
                         display: flex;
@@ -213,13 +349,14 @@
                             margin-left: 5px;
                             align-self: center;
                             z-index: 1;
+                            color: var(--pf2e-downtime-party-bar-text-color);
                         }
                         
                         div.pf2e-downtime-bar-fill {
                             height: 100%;
                             opacity: 50%;
-                            background-color: var(--color-level-info);
-                            border-right: 1px solid var(--color-level-info-border);
+                            background-color: var(--pf2e-downtime-party-bar-fill-color);
+                            border-right: 1px solid var(--pf2e-downtime-party-bar-border-color);
                             border-radius: 3px;
                         }
                     }
@@ -242,13 +379,27 @@
                         display: inline-grid;
                         align-self: center;
                         font-size: var(--font-size-12);
+                        color: var(--pf2e-downtime-party-control-color);
     
                         &:hover {
-                            text-shadow: 0 0 8px var(--color-shadow-primary);
+                            color: var(--pf2e-downtime-party-control-color-hover);
+                            text-shadow: 0 0 8px var(--pf2e-downtime-party-control-shadow-color-hover);
                         }
                     }
                 }
-                
+            }
+        }
+
+        button.pf2e-downtime-add-project {
+            flex: 1;
+            color: var(--pf2e-downtime-party-button-text-color);
+            background-color: var(--pf2e-downtime-party-button-bg-color);
+            border-color: var(--pf2e-downtime-party-button-border-color);
+
+            &:hover {
+                color: var(--pf2e-downtime-party-button-text-color-hover);
+                background-color: var(--pf2e-downtime-party-button-bg-color-hover);
+                box-shadow: none;
             }
         }
     }  
@@ -256,12 +407,12 @@
 }
 
 // PROJECT EDIT APPLICATION
-.application.pf2e-downtime {
+.application.pf2e-downtime-edit-app {
     .pf2e-downtime-project-editor {
 
         header.pf2e-downtime-project-editor-header{
-            border-bottom: 1px solid var(--color-border-divider);
-            color: var(--color-pf-primary);
+            border-bottom: 1px solid var(--pf2e-downtime-app-header-border-color);
+            color: var(--pf2e-downtime-app-header-text-color);
             margin: 0.5rem 0;
             font-size: 1rem;
             font-weight: 600;
@@ -284,28 +435,16 @@
 }
 
 // CHAT MESSAGES
-.chat-message .pf2e-downtime {
+.chat-message .pf2e-downtime-chat-card {
     div.pf2e-downtime-chat-card-content {
         span.bold {
             font-weight: bold;
         }
     
         div.pf2e-downtime-chat-card-footer {
-            border-top: 1px solid var(--color-border-divider);
+            border-top: 1px solid var(--pf2e-downtime-chat-footer-border-color);
             padding-top: 5px;
             font-size:12px;
         }
     }
-}
-
-// DARK MODE ADJUSTMENTS
-body.theme-dark {
-    // PROJECT EDIT APPLICATION
-    .application.pf2e-downtime {
-        .pf2e-downtime-project-editor {
-            header.pf2e-downtime-project-editor-header{  
-                color: var(--color-text-light-heading);
-            }
-        }
-    }  
 }
