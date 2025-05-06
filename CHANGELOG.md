@@ -1,3 +1,7 @@
+# Version 0.2.0
+- Updated styles on both PC and Party sheets
+- Added limited support for PF2e Dorako UI
+
 # Version 0.1.1
 - Fix: PC and party sheets no longer throw errors when opening them for the first time if they don't have downtime project flags
 
