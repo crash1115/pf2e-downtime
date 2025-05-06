@@ -57,14 +57,37 @@ Players can see the amount of downtime they have available to them at the top of
 ## Creating Projects
 Players can create new downtime projects from the Downtime tab of their character sheets by pressing the `New Project` button. This will create a new project and open the Edit Project window, where they can configure the project with a name, image, progress information, and notes. There are handy help icons you can hover over to learn more about each field and what it does.
 
+## Creating Shared Projects
+You can create Shared Projects from the Downtime tab of the party sheet by pressing the `New Shared Project` button. This creates a project that will appear on the party sheet's Downtime tab. These projects can be selected by any member of the party when they Spend downtime. Their available downtime will be reduced as normal, but the project's progress value will only increase automatically if the player has ownership permissions for the party actor that owns the shared project. If not, they'll be prompted to ask the GM or owner to make the update for them.
+
 ## Managing Projects
-Players can manage their projects via the buttons to the right of each one:
+If you have ownership of an actor, you can manage its projects via the buttons to the right of each one:
 - `Restart Project` will reset the project's progress to zero, but leave everything else unchanged. Useful for projects you repeat often.
 - `Edit Project` will open up the Edit Project window and allow you to make changes to your project.
 - `Delete Project` will delete the project from your sheet.
+Each of these buttons may be disabled or behave differently if you don't have Edit permissions (see below).
 
-## Creating Shared Projects
-You can create Shared Projects from the Downtime tab of the party sheet by pressing the `New Shared Project` button. This creates a project that will appear on the party sheet's Downtime tab. These projects can be selected by any member of the party when they Spend downtime. Their available downtime will be reduced as normal, but the project's progress value will only increase automatically if the player has ownership permissions for the party actor that owns the shared project. If not, they'll be prompted to ask the GM or owner to make the update for them.
+## Project Edit/View Permissions
+When creating or editing a project, the GM will be able to set two additional permissions:
+- `Players Can View` controls whether or not a player can see the project. If this is checked, the project will appear on their character sheet (or the party sheet). They'll be able to click the Edit Project button to view its details (but not make changes).
+- `Players Can Edit` controls whether or not players can update the projects. If this checked, they'll be able to Restart, Edit, and Delete the project. They'll also be able to select the project as an option when they spend downtime.
+
+GM users are not limited by either of these options. They can always view, edit, and spend downtime on any project. _It's recommended that you test out the behavior of any project permissions you set up to verify they work the way you intend in conjunction with Foundry's permissions._
+
+## Example Project Permissions Setups
+Here's a handful of ways you can set up projects for various use cases:
+
+**Clock or Counter**
+
+Check `Players Can View` and `Disable Downtime Spending`, uncheck `Players Can Edit`. This puts it in "read only" mode for them, you can't spend downtime on it, but you can still edit it from the sheet.
+
+**Faction Rep**
+
+Check `Players Can View`, uncheck `Players Can Edit` and `Disable Downtime Spending`. They can see it, but they can't mess with it. If you go to their sheet, you can spend downtime on it for them to increase it, but they can't do it themselves.
+
+**Super Secret GM Things**
+
+Uncheck everything. They can't see it or edit it, and it won't show up in the Spend Downtime dialog if you ever click on it.
 
 ---
 
