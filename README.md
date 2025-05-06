@@ -20,6 +20,18 @@ The goal of this module is to provide a place to keeping track of things that yo
 ✨ **Individual and Shared/Party Project Tracking**
 - Create and track projects for your character individually, or set up shared projects with your party for everyone to work on and contribute to.
 
+## Compatibility
+
+⚠️ **PF2E Dorako UI**
+- This module has partial support for Dorako UI
+- It's usable in light and dark mode across all sheet themes, but the colors of elements in the Downtime tab don't always match up with Dorako's theme colors
+- I have no plans to maintain support for this module
+
+❌ **PF2E Pathfinder Ui v3**
+- This module has no support with PF2e Pathfhinder Ui v3
+- It's technically functional, but it looks like garbage almost universally
+- I have no plans to support this module further
+
 ## Installation
 
 Not currently available in the module browser, so you'll have to use the manifest URL instead:
