@@ -47,32 +47,41 @@ The module allows you to specify what units downtime is measured in. These units
 
 ## Awarding Downtime
 Awarding downtime is not a mandatory feature for the module to work, but it helps with GM peace of mind, and helps players know how much time they have to work with. GM users can award downtime in two ways:
-- To award downtime to the whole party at once, open the party sheet, go to the Downtime tab, and click the `Award Downtime to Party sheet` button.
+- To award downtime to the whole party at once, open the party sheet, go to the Downtime tab, and click the `Award Downtime to Party` button.
 - To award downtime to an individual PC, open up their character sheet, go to the Downtime tab, and click the `Award` button.
-When you award downtime in this way, it will be displayed on the Downtime tab of the character sheet for each PC.
+
+When you award downtime, it will be displayed on the Downtime tab of the character sheet for each PC.
 
 ## Spending Downtime
-Players can see the amount of downtime they have available to them at the top of the Downtime tab of their character sheets. To spend that downtime, click the `Spend` button. This will present you with a prompt that asks how many days you'd like to spend, which project you'd like to work on, and how much progress on that project you can make during that time.
+Players can see the amount of downtime they have available to them at the top of the Downtime tab of their character sheets. To spend that downtime, click the `Spend` button. This will present you with a prompt that asks how many days you'd like to spend, which project you'd like to work on, and how much progress on that project you can make during that time. In order for a project to appear in the list of options to spend time on, it must meet the following criteria:
+- It must be on either your character sheet, or the party sheet for the party your character belongs to
+- It must be incomplete
+- It must have the `Disable Downtime` Spend option unchecked
+- You must be able to view _and_ edit the project (see Permissions below)
+
+If you work on a project that belongs to an actor you don't have ownership of (generally the party actor), its progress will not automatically update; it'll instead prompt you to have the GM or owner update it manually.
 
 ## Creating Projects
-Players can create new downtime projects from the Downtime tab of their character sheets by pressing the `New Project` button. This will create a new project and open the Edit Project window, where they can configure the project with a name, image, progress information, and notes. There are handy help icons you can hover over to learn more about each field and what it does.
+Players can create new downtime projects from the Downtime tab of their character sheets by pressing the `New Project` button. This will create a new project and open the Edit Project window, where they can configure the project with a name, image, progress information, notes, and other options. There are handy help icons you can hover over to learn more about each field and what it does.
 
 ## Creating Shared Projects
-You can create Shared Projects from the Downtime tab of the party sheet by pressing the `New Shared Project` button. This creates a project that will appear on the party sheet's Downtime tab. These projects can be selected by any member of the party when they Spend downtime. Their available downtime will be reduced as normal, but the project's progress value will only increase automatically if the player has ownership permissions for the party actor that owns the shared project. If not, they'll be prompted to ask the GM or owner to make the update for them.
+You can create Shared Projects from the Downtime tab of the party sheet by pressing the `New Shared Project` button. This creates a project that will appear on the party sheet's Downtime tab. These projects can be selected by any member of the party when they Spend downtime (as long as the project meets the requirements listed in the Spend Downtime section above).
 
 ## Managing Projects
 If you have ownership of an actor, you can manage its projects via the buttons to the right of each one:
 - `Restart Project` will reset the project's progress to zero, but leave everything else unchanged. Useful for projects you repeat often.
 - `Edit Project` will open up the Edit Project window and allow you to make changes to your project.
 - `Delete Project` will delete the project from your sheet.
-Each of these buttons may be disabled or behave differently if you don't have Edit permissions (see below).
+These buttons may be disabled or behave differently if you don't have Edit permissions (see below) for the project.
 
 ## Project Edit/View Permissions
 When creating or editing a project, the GM will be able to set two additional permissions:
-- `Players Can View` controls whether or not a player can see the project. If this is checked, the project will appear on their character sheet (or the party sheet). They'll be able to click the Edit Project button to view its details (but not make changes).
+- `Players Can View` controls whether or not a player can see the project. If this is checked, the project will appear on their character sheet (or the party sheet). They'll be able to click the Edit Project button to view its details in read-only mode.
 - `Players Can Edit` controls whether or not players can update the projects. If this checked, they'll be able to Restart, Edit, and Delete the project. They'll also be able to select the project as an option when they spend downtime.
 
-GM users are not limited by either of these options. They can always view, edit, and spend downtime on any project. _It's recommended that you test out the behavior of any project permissions you set up to verify they work the way you intend in conjunction with Foundry's permissions._
+GM users are not limited by either of these options. They can always view, edit, and spend downtime on any project.
+
+_It's recommended that you test out the behavior of any project permissions you set up to verify they work the way you intend (especially in conjunction with Foundry's actor permissions) before entering any sensitive info in a project._
 
 ## Example Project Permissions Setups
 Here's a handful of ways you can set up projects for various use cases:
