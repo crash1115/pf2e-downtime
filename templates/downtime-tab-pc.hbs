@@ -3,7 +3,7 @@
         {{!-- DOWNTIME MANAGEMENT  --}}
         <header class="pf2e-downtime-header">Available Downtime</header>   
         <div class="pf2e-downtime-management">
-            <h4 class="pf2e-downtime-days-available">{{actor.flags.pf2e-downtime.downtimeDays}} {{unit}}(s)</h4>
+            <h4 class="pf2e-downtime-days-available">{{daysAvailable}} {{unit}}(s)</h4>
             {{#if user.isGM}}
             <button class="pf2e-downtime-award-downtime" type="button" title="Award Dowmtime"><i class="fas fa-house"></i> Award</button>
             {{/if}}

@@ -51,16 +51,20 @@ async function addTabToPcSheet(app, html, data) {
                    + game.settings.get(MODULE, 'downtimeUnit').toLowerCase().slice(1);
 
         const actor = game.actors.get(data.actor._id);
-        const downtimeDaysOnActor = actor.getFlag(MODULE, 'downtimeDays');
+        let downtimeDaysOnActor = actor.getFlag(MODULE, 'downtimeDays');
         if(!downtimeDaysOnActor){
-            await actor.setFlag(MODULE, 'downtimeDays', 0);
+            downtimeDaysOnActor = 0;
+            if(actor.testUserPermission(game.user, "OWNER")){
+                await actor.setFlag(MODULE, 'downtimeDays', 0);
+            } 
         }
         
-        // Get all the projects for the actor. If there aren't any, make them.
         let projectsOnActor = actor.getFlag(MODULE, 'projects');
         if(!projectsOnActor){
             projectsOnActor = [];
-            await actor.setFlag(MODULE, 'projects', []);
+            if(actor.testUserPermission(game.user, "OWNER")){
+                await actor.setFlag(MODULE, 'projects', []);
+            }
         }
 
         // Format the project data so it's in the structure we want
@@ -72,6 +76,7 @@ async function addTabToPcSheet(app, html, data) {
             unit: unit,
             user: data.user,
             projectData: projectData,
+            daysAvailable: downtimeDaysOnActor,
             showDefaultHeader: projectsOnActor.length <= 0
         };
         let newSheetTab = html.find('.sheet-content');
@@ -105,15 +110,13 @@ async function addTabToPartySheet(app, html, data) {
                    + game.settings.get(MODULE, 'downtimeUnit').toLowerCase().slice(1);
 
         const actor = game.actors.get(data.actor._id);
-        const downtimeDaysOnActor = actor.getFlag(MODULE, 'downtimeDays');
-        if(!downtimeDaysOnActor){
-            await actor.setFlag(MODULE, 'downtimeDays', 0);
-        }
         
         let projectsOnActor = actor.getFlag(MODULE, 'projects');
         if(!projectsOnActor){
             projectsOnActor = [];
-            await actor.setFlag(MODULE, 'projects', []);
+            if(actor.testUserPermission(game.user, "OWNER")){
+                await actor.setFlag(MODULE, 'projects', []);
+            }
         }
 
         // Format the project data so it's in the structure we want

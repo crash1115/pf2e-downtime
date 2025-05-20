@@ -1,3 +1,6 @@
+# Version 0.2.1
+- Fixed an error that would throw when a player without ownership of an actor tried to open the actor's sheet.
+
 # Version 0.2.0
 - Updated styles on both PC and Party sheets
 - Added limited support for PF2e Dorako UI
