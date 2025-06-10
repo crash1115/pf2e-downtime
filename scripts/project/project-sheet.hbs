@@ -85,7 +85,7 @@
 
     <header class="pf2e-downtime-project-editor-header">Notes</header>
 
-    <div class="form-group">
+    <div class="form-group pf2e-downtime-one-col">
         <div class="form-fields">
             <prose-mirror name="note" value="{{project.note}}" toggled="true" {{#unless (pf2e-downtime-user-can-edit project)}}readonly{{/unless}}>
                 {{{project.note}}}
@@ -116,7 +116,7 @@
             <input type="checkbox" name="playerCanEdit" {{checked project.playerCanEdit}} {{#unless user.isGM}}readonly{{/unless}}> 
         </div>
         <div class="pf2e-downtime-help-icon"
-             data-tooltip="When checked, this project will be editable by players and visible to them in the Spend Downtime dropdown.">
+             data-tooltip="When checked, this project will be editable by players and visible to them in the Spend Downtime dropdown. Does nothing if the players don't have View access.">
             <i class="fas fa-circle-question"></i>
         </div>
     </div>
@@ -127,7 +127,7 @@
             <input type="checkbox" name="disableSpend" {{checked project.disableSpend}} {{#unless (pf2e-downtime-user-can-edit project)}}readonly{{/unless}}>
         </div>
         <div class="pf2e-downtime-help-icon"
-             data-tooltip="When checked, this project won't appear in the Spend Downtime dropdown, even if the player has edit access.">
+             data-tooltip="When checked, this project won't appear in the Spend Downtime dropdown, even if the players have Edit access.">
             <i class="fas fa-circle-question"></i>
         </div>
     </div>

@@ -1,3 +1,6 @@
+# Version 0.13.0
+- Compatibility with Foundry v13 and pf2e v7
+
 # Version 0.2.1
 - Fixed an error that would throw when a player without ownership of an actor tried to open the actor's sheet.
 

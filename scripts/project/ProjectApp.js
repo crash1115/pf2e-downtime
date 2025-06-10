@@ -36,8 +36,8 @@ export class ProjectApp extends HandlebarsApplicationMixin(ApplicationV2) {
 
     async _prepareContext(options) {
         const context = await super._prepareContext(options);
-         context.project = ProjectHandler.getProjectForActor(this.project.id, this.actor); // refreshes project data
-         context.user = game.user;
+        context.project = ProjectHandler.getProjectForActor(this.project.id, this.actor); // refreshes project data
+        context.user = game.user;
         return context;
     }
 

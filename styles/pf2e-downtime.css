@@ -331,11 +331,23 @@ body.theme-dark .pf2e-downtime-edit-app {
 .application.pf2e-downtime-edit-app .pf2e-downtime-project-editor header.pf2e-downtime-project-editor-header {
   border-bottom: 1px solid var(--pf2e-downtime-app-header-border-color);
   color: var(--pf2e-downtime-app-header-text-color);
-  margin: 0.5rem 0;
+  margin-bottom: 10px;
   font-size: 1rem;
   font-weight: 600;
   line-height: 1;
   font-family: var(--serif);
+}
+.application.pf2e-downtime-edit-app .pf2e-downtime-project-editor div.form-group {
+  display: grid;
+  grid-template-columns: auto 350px max-content;
+  margin-bottom: 10px;
+  align-items: center;
+}
+.application.pf2e-downtime-edit-app .pf2e-downtime-project-editor div.form-group.pf2e-downtime-one-col {
+  grid-template-columns: auto max-content;
+}
+.application.pf2e-downtime-edit-app .pf2e-downtime-project-editor div.form-group label {
+  font-weight: bold;
 }
 .application.pf2e-downtime-edit-app .pf2e-downtime-project-editor div.form-group div.pf2e-downtime-help-icon {
   flex: none;

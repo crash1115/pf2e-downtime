@@ -84,7 +84,7 @@ export class SpendHandler {
 
         if(!response.project){
             if(game.settings.get(MODULE, 'sendUseToChat')){
-                let chatHtml = await renderTemplate('modules/pf2e-downtime/templates/downtime-use-card.hbs', {
+                let chatHtml = await foundry.applications.handlebars.renderTemplate('modules/pf2e-downtime/templates/downtime-use-card.hbs', {
                     actorName: actor.name,
                     daysSpent: response.days,
                     project: null,
@@ -117,7 +117,7 @@ export class SpendHandler {
         }
         
         if(game.settings.get(MODULE, 'sendUseToChat')){
-            let chatHtml = await renderTemplate('modules/pf2e-downtime/templates/downtime-use-card.hbs', {
+            let chatHtml = await foundry.applications.handlebars.renderTemplate('modules/pf2e-downtime/templates/downtime-use-card.hbs', {
                 actorName: actor.name,
                 daysSpent: response.days,
                 downtimeUnit: UNIT,
