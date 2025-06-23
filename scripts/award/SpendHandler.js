@@ -125,7 +125,8 @@ export class SpendHandler {
                     name: project.name,
                     oldProgress: oldProgressValue,
                     newProgress: newProgressValue,
-                    progressLabel: project.progress.label
+                    progressLabel: project.progress.label,
+                    toGo: project.progress.max - newProgressValue
                 },                
                 daysRemaining: newDowntimeDaysValue
             });
