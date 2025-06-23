@@ -17,7 +17,7 @@ export class SpendHandler {
         const editable = visible.filter (p => ProjectHandler.userCanEdit(p)) || []; // Projects the user can edit
         const unfinished = editable.filter(p => p.progress.current < p.progress.max) || []; // Projects tht aren't finished
         const canSpend = unfinished.filter(p => !p.disableSpend) || []; // Projects that can have downtime spent on them
-        const choices = canSpend.reduce((choices, project) => Object.assign(choices, {[project.id]: `${project.name} (${project.progress.current} / ${project.progress.max})`}), {});
+        const choices = canSpend.reduce((choices, project) => Object.assign(choices, {[project.id]: `${project.name} (${project.progress.current} / ${project.progress.max} ${project.progress.label})`}), {});
         const maxDays = actor.getFlag(MODULE, "downtimeDays");
                
         const daysField = new fields.NumberField({
