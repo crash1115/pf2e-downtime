@@ -1,3 +1,11 @@
+# Version 0.13.1
+- Projects now have an option to automatically calculate progress increases based on a fixed rate per downtime unit spent
+- The Spend Downtime dialog's project dropdown now displays progress units
+- Chat messages from spending downtime now display the remaining progress
+- Added a setting to display chat messages when awarding downtime (default on)
+- Fixed error when opening PC sheet as a player
+- Improved styling support for a selection of Dorako UI application themes (BG3, 5e, and Github)
+
 # Version 0.13.0
 - Compatibility with Foundry v13 and pf2e v7
 

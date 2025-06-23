@@ -26,7 +26,7 @@ The goal of this module is to provide a place to keeping track of things that yo
 ⚠️ **PF2e Dorako UI**
 - This module has partial support for PF2e Dorako UI
 - V12: It's usable in light and dark mode across all sheet themes, but the colors of elements in the Downtime tab don't always match up with Dorako's theme colors
-- V13: It's pretty terrible, don't bother
+- V13: Usable with a selection of application themes (BG3, 5e, Github) on both light and dark modes
 - I have no plans to maintain support for this module
 
 ❌ **PF2e Pathfinder Ui v3**
