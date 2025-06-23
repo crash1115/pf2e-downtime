@@ -72,12 +72,14 @@ export class AwardHandler {
         for(var i=0; i<PCs.length; i++){
             const actor = PCs[i];
             const downtimeDays = actor.getFlag(MODULE,"downtimeDays") || 0;
-            const newDays = downtimeDays + response.days;
+            const newDays = Math.max(0, downtimeDays + response.days);
             await actor.setFlag(MODULE,"downtimeDays", newDays);
 
             const msg = `Awarded ${response.days} downtime ${UNIT}(s) to ${actor.name}. They now have ${newDays}.`;
             ui.notifications.notify(msg);
         }
+
+        await this.sendAwardToChat(party, response, UNIT);
     }
 
     static async awardDowntimeToActor(actor){
@@ -131,11 +133,27 @@ export class AwardHandler {
         if (!response) return;
         
         const downtimeDays = actor.getFlag(MODULE,"downtimeDays") || 0;
-        const newDays = downtimeDays + response.days;
+        const newDays = Math.max(0, downtimeDays + response.days);
         await actor.setFlag(MODULE,"downtimeDays", newDays);
 
         const msg = `Awarded ${response.days} downtime ${UNIT}(s) to ${actor.name}. They now have ${newDays}.`;
         ui.notifications.notify(msg);
+
+        await this.sendAwardToChat(actor, response, UNIT);
     
+    }
+
+    static async sendAwardToChat(actor, response, unit){
+        if(game.settings.get(MODULE, 'sendAwardToChat')){
+            let chatHtml = await foundry.applications.handlebars.renderTemplate('modules/pf2e-downtime/templates/downtime-award-card.hbs', {
+                actorName: actor.name,
+                daysAwarded: response.days,
+                downtimeUnit: unit
+            });
+            let msgData = {
+                content: chatHtml
+            };
+            await ChatMessage.create(msgData);
+        }
     }
 }

@@ -11,8 +11,17 @@ export function registerSettings(){
     });
 
     game.settings.register(MODULE, "sendUseToChat", {
-        name: "Create Chat Messages",
-        hint: "When enabled, sends messages to chat when players Spend downtime.",
+        name: "Create Chat Messages When Spending Downtime",
+        hint: "When enabled, sends messages to chat when players spend downtime.",
+        scope: "world",
+        config: true,
+        default: true,
+        type: Boolean,
+    });
+
+    game.settings.register(MODULE, "sendAwardToChat", {
+        name: "Create Chat Messages When Awarding Downtime",
+        hint: "When enabled, sends messages to chat when the GM awards downtime.",
         scope: "world",
         config: true,
         default: true,
