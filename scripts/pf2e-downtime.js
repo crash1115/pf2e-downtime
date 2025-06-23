@@ -158,13 +158,14 @@ async function addTabToPartySheet(app, html, data) {
 
 function activateDowntimeTabListeners(actorData, html){
 
-    const awardBtn = html[0].querySelector('.pf2e-downtime-award-downtime');
-    awardBtn.addEventListener("click", async (ev) => {
-        const actor = game.actors.get(actorData._id);
-        if(actor.type === "character") AwardHandler.awardDowntimeToActor(actor);
-        if(actor.type === "party") AwardHandler.awardDowntimeToParty(actor.id);
-    });
-
+    if(game.user.isGM){
+        const awardBtn = html[0].querySelector('.pf2e-downtime-award-downtime');
+        awardBtn.addEventListener("click", async (ev) => {
+            const actor = game.actors.get(actorData._id);
+            if(actor.type === "character") AwardHandler.awardDowntimeToActor(actor);
+            if(actor.type === "party") AwardHandler.awardDowntimeToParty(actor.id);
+        });
+    }
     
     if(actorData.type === "character"){
         const spendBtn = html[0].querySelector('.pf2e-downtime-spend-downtime');
