@@ -83,7 +83,7 @@ export class SpendHandler {
                         const project = combined.filter(p => p.id === projectId)[0];
                         if(!!project.progress.perDay){
                             const days = event.target.element.querySelector('range-picker[name="days"] input[type="range"]').value;
-                            const newProgress = days * project.progress.perDay;
+                            const newProgress = (days * project.progress.perDay).toFixed(2); //rounding for floating point errors; 2 places is reasonably sane on a currency system based on 10s
                             event.target.element.querySelector('input[name="progress"]').value = newProgress;       
                         }
                     }                    
@@ -96,7 +96,20 @@ export class SpendHandler {
                         const project = combined.filter(p => p.id === projectId)[0];
                         if(!!project.progress.perDay){
                             const days = event.target.element.querySelector('range-picker[name="days"] input[type="range"]').value;
-                            const newProgress = days * project.progress.perDay;
+                            const newProgress = (days * project.progress.perDay).toFixed(2); //rounding for floating point errors; 2 places is reasonably sane on a currency system based on 10s
+                            event.target.element.querySelector('input[name="progress"]').value = newProgress;       
+                        }
+                    }                    
+                });
+
+                const daysFieldNumber = event.target.element.querySelector('range-picker[name="days"] input[type="number"]');
+                daysFieldNumber.addEventListener("change", () => {
+                    const projectId = event.target.element.querySelector('select[name="project"]').value || null;
+                    if(projectId){
+                        const project = combined.filter(p => p.id === projectId)[0];
+                        if(!!project.progress.perDay){
+                            const days = event.target.element.querySelector('range-picker[name="days"] input[type="range"]').value;
+                            const newProgress = (days * project.progress.perDay).toFixed(2); //rounding for floating point errors; 2 places is reasonably sane on a currency system based on 10s
                             event.target.element.querySelector('input[name="progress"]').value = newProgress;       
                         }
                     }                    
