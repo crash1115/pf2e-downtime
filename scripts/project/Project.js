@@ -8,7 +8,8 @@ export default class Project {
         this.progress = {
             current: 0,
             max: 1,
-            label: ""
+            label: "",
+            perDay: undefined
         };
         this.note = "";
         this.playerCanEdit = true;

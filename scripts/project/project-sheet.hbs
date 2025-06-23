@@ -100,6 +100,17 @@
     <header class="pf2e-downtime-project-editor-header">Options</header>
 
     <div class="form-group">
+        <label>Progress Gained Per {{unit_cap}} {{#if project.progress.label}} ({{project.progress.label}}) {{/if}}</label>
+        <div class="form-fields">
+            <input type="text" name="perDay" value="{{project.progress.perDay}}" {{#unless (pf2e-downtime-user-can-edit project)}}readonly{{/unless}}>
+        </div>
+        <div class="pf2e-downtime-help-icon"
+             data-tooltip="Entering a value will let the module automatically calculate Progress Gained for this project when you Spend downtime, based on the number of {{unit}}s spent. The calculated value can be adjusted afterwards. Leave this blank if you want to manually enter a value each time.">
+            <i class="fas fa-circle-question"></i>
+        </div>
+    </div>    
+    
+    <div class="form-group">
         <label>Players Can View</label>
         <div class="form-fields">
             <input type="checkbox" name="playerCanView" {{checked project.playerCanView}} {{#unless user.isGM}}readonly{{/unless}}>
@@ -122,7 +133,7 @@
     </div>
 
     <div class="form-group">
-        <label>Disable Downtime Spending</label>
+        <label>Hide From Spend Downtime Dropdown</label>
         <div class="form-fields">
             <input type="checkbox" name="disableSpend" {{checked project.disableSpend}} {{#unless (pf2e-downtime-user-can-edit project)}}readonly{{/unless}}>
         </div>
@@ -131,5 +142,7 @@
             <i class="fas fa-circle-question"></i>
         </div>
     </div>
+
+
 
 </div>

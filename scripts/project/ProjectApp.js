@@ -38,6 +38,11 @@ export class ProjectApp extends HandlebarsApplicationMixin(ApplicationV2) {
         const context = await super._prepareContext(options);
         context.project = ProjectHandler.getProjectForActor(this.project.id, this.actor); // refreshes project data
         context.user = game.user;
+
+        const UNIT = game.settings.get(MODULE, 'downtimeUnit');
+        context.unit = UNIT.toLowerCase();
+        context.unit_cap = UNIT.charAt(0).toUpperCase() + UNIT.slice(1)
+        
         return context;
     }
 
@@ -95,7 +100,8 @@ export class ProjectApp extends HandlebarsApplicationMixin(ApplicationV2) {
             progress: {
                 current: newCurrentProgress,
                 max: newMax,
-                label: newProjectData.label
+                label: newProjectData.label,
+                perDay: newProjectData.perDay
             },
             note: newProjectData.note,
             playerCanView: newProjectData.playerCanView,

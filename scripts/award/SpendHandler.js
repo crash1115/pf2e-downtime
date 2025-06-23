@@ -73,8 +73,36 @@ export class SpendHandler {
                 icon: "fa-solid fa-check",
                 callback: (_event, button, _dialog) => new FormDataExtended(button.form).object,
             },
-            rejectClose: false
-        })
+            rejectClose: false,
+            render: (event) => {
+
+                const projectField = event.target.element.querySelector('select[name="project"]');
+                projectField.addEventListener("change", () => {
+                    const projectId = event.target.element.querySelector('select[name="project"]').value || null;
+                    if(projectId){
+                        const project = combined.filter(p => p.id === projectId)[0];
+                        if(!!project.progress.perDay){
+                            const days = event.target.element.querySelector('range-picker[name="days"] input[type="range"]').value;
+                            const newProgress = days * project.progress.perDay;
+                            event.target.element.querySelector('input[name="progress"]').value = newProgress;       
+                        }
+                    }                    
+                });
+
+                const daysFieldRange = event.target.element.querySelector('range-picker[name="days"] input[type="range"]');
+                daysFieldRange.addEventListener("change", () => {
+                    const projectId = event.target.element.querySelector('select[name="project"]').value || null;
+                    if(projectId){
+                        const project = combined.filter(p => p.id === projectId)[0];
+                        if(!!project.progress.perDay){
+                            const days = event.target.element.querySelector('range-picker[name="days"] input[type="range"]').value;
+                            const newProgress = days * project.progress.perDay;
+                            event.target.element.querySelector('input[name="progress"]').value = newProgress;       
+                        }
+                    }                    
+                });
+            }
+        });
 
         if (!response) return;
         
