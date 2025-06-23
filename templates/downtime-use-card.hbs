@@ -5,8 +5,12 @@
       <li><span class="bold">Time Spent:</span> {{daysSpent}} {{downtimeUnit}}(s)</li>
       {{#if project}}
       <li><span class="bold">Project:</span> {{project.name}}</li>
-      <li><span class="bold">Progress:</span> {{project.oldProgress}} -> {{project.newProgress}} {{project.progressLabel}}</li>
-      <li><span class="bold">To Go:</span> {{project.toGo}} {{project.progressLabel}}</li>
+      <li><span class="bold">Progress:</span> {{project.oldProgress}} -> {{project.newProgress}} {{project.progressLabel}}
+        <ul>
+          <li><span class="bold">Made:</span> {{project.progressMade}} {{project.progressLabel}}</li>
+          <li><span class="bold">Remaining:</span> {{project.progressToGo}} {{project.progressLabel}}</li>
+        </ul>
+      </li>
       {{/if}}
     </ul>
     <p>They have <span class="bold">{{daysRemaining}}</span> {{downtimeUnit}}(s) remaining.</p>
