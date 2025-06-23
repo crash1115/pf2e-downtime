@@ -64,7 +64,118 @@ body.theme-dark {
     }
 }
 
-// Dorako
+// Dorako BG3 Application Theme
+body.theme-light[data-application-theme=bg3],
+body.theme-dark[data-application-theme=bg3]{
+    .pf2e-downtime-spend,
+    .pf2e-downtime-award,
+    .pf2e-downtime-edit-app,
+    .sheet.actor.character .pf2e-downtime,
+    .sheet.actor.party .pf2e-downtime {
+        color: rgb(239, 230, 216);
+    }
+    
+    // Applications
+    --pf2e-downtime-app-header-text-color: #c9c7b8;
+    // PC Sheet
+    --pf2e-downtime-pc-header-text-color: #c9c7b8;
+
+    --pf2e-downtime-pc-project-name-color: rgb(239, 230, 216);
+
+    --pf2e-downtime-pc-control-color:rgb(239, 230, 216);
+    --pf2e-downtime-pc-control-color-hover:#ea4a72;
+    --pf2e-downtime-pc-control-shadow-color-hover: #ea4a72;
+
+    --pf2e-downtime-pc-bar-text-color: rgb(239, 230, 216);
+    
+    // Party Sheet
+    --pf2e-downtime-party-header-text-color: #c9c7b8;
+
+    --pf2e-downtime-party-project-name-color: rgb(239, 230, 216);
+
+    --pf2e-downtime-party-control-color:rgb(239, 230, 216);
+    --pf2e-downtime-party-control-color-hover:#ea4a72;
+    --pf2e-downtime-party-control-shadow-color-hover: #ea4a72;
+
+    --pf2e-downtime-party-bar-text-color: rgb(239, 230, 216);
+}
+
+// Dorako 5e Application Theme
+body.theme-dark[data-application-theme=dnd5e2]{
+    .sheet.actor.character .pf2e-downtime,
+    .sheet.actor.party .pf2e-downtime {
+        color: rgb(239, 230, 216);
+    }
+    
+    // PC Sheet
+    --pf2e-downtime-pc-header-text-color: rgb(186, 169, 145);
+
+    --pf2e-downtime-pc-project-name-color: white;
+
+    --pf2e-downtime-pc-control-color:rgb(239, 230, 216);
+    --pf2e-downtime-pc-control-color-hover:#59a1f6;
+    --pf2e-downtime-pc-control-shadow-color-hover: #59a1f6;
+
+    --pf2e-downtime-pc-bar-text-color: white;
+    
+    // Party Sheet
+    --pf2e-downtime-party-header-text-color: rgb(186, 169, 145);
+
+    --pf2e-downtime-party-project-name-color: white;
+
+    --pf2e-downtime-party-control-color:rgb(239, 230, 216);
+    --pf2e-downtime-party-control-color-hover:#26b231;
+    --pf2e-downtime-party-control-shadow-color-hover: #26b231;
+
+    --pf2e-downtime-party-bar-text-color: white;
+}
+
+// Dorako Github Application Theme Dark
+body.theme-dark[data-application-theme=github]{
+    .sheet.actor.character .pf2e-downtime,
+    .sheet.actor.party .pf2e-downtime {
+        color: rgb(239, 230, 216);
+    }
+    
+    // PC Sheet
+    --pf2e-downtime-pc-header-text-color: rgb(186, 169, 145);
+
+    --pf2e-downtime-pc-project-name-color: white;
+
+    --pf2e-downtime-pc-control-color:rgb(239, 230, 216);
+    --pf2e-downtime-pc-control-color-hover:#59a1f6;
+    --pf2e-downtime-pc-control-shadow-color-hover: #59a1f6;
+
+    --pf2e-downtime-pc-bar-text-color: white;
+    
+    // Party Sheet
+    --pf2e-downtime-party-header-text-color: rgb(186, 169, 145);
+
+    --pf2e-downtime-party-project-name-color: white;
+
+    --pf2e-downtime-party-control-color:rgb(239, 230, 216);
+    --pf2e-downtime-party-control-color-hover:#26b231;
+    --pf2e-downtime-party-control-shadow-color-hover: #26b231;
+
+    --pf2e-downtime-party-bar-text-color: white;
+}
+
+// Dorako Github Application Theme Light
+body.theme-light[data-application-theme=github]{
+    .pf2e-downtime-spend,
+    .pf2e-downtime-award,
+    .pf2e-downtime-edit-app {
+        button{
+            color: #cfd2da;
+        }
+    }
+   
+}
+
+
+
+
+
 // [data-theme][data-color-scheme=light] {
 //     &.pf2e-downtime-edit-app {
 //         --pf2e-downtime-app-header-text-color: #5e0000;
