@@ -65,38 +65,12 @@ body.theme-dark {
 }
 
 // Dorako
-[data-theme][data-color-scheme=light] {
-    &.pf2e-downtime-edit-app {
-        --pf2e-downtime-app-header-text-color: #5e0000;
-    }
-}
+// [data-theme][data-color-scheme=light] {
+//     &.pf2e-downtime-edit-app {
+//         --pf2e-downtime-app-header-text-color: #5e0000;
+//     }
+// }
 
-[data-theme][data-color-scheme=dark] {
-    &.pf2e-downtime-edit-app {
-        --pf2e-downtime-app-header-text-color: #c9c7b8;
-    }
-
-    --pf2e-downtime-pc-header-text-color: #efe6d8;
-    --pf2e-downtime-pc-header-border-color: #e9d7a1;
-    --pf2e-downtime-pc-project-name-color:#efe6d8;
-    --pf2e-downtime-pc-control-color:#efe6d8;
-    --pf2e-downtime-pc-control-color-hover:#efe6d8;
-    --pf2e-downtime-pc-control-shadow-color-hover: none;
-    --pf2e-downtime-pc-bar-text-color: white;
-    --pf2e-downtime-pc-button-bg-color: #28328f;
-    --pf2e-downtime-pc-button-bg-color-hover: #171f69 ;
-
-
-    --pf2e-downtime-party-header-text-color: #efe6d8;
-    --pf2e-downtime-party-header-border-color: #e9d7a1;
-    --pf2e-downtime-party-project-name-color: #efe6d8;
-    --pf2e-downtime-party-control-color:#efe6d8;
-    --pf2e-downtime-party-control-color-hover:#efe6d8;
-    --pf2e-downtime-party-control-shadow-color-hover: none;
-    --pf2e-downtime-party-bar-text-color: white;
-    --pf2e-downtime-party-button-bg-color: #1e6d36;
-    --pf2e-downtime-party-button-bg-color-hover: #124321;   
-}
 
 // DOWNTIME TAB - PC SHEET
 .sheet.actor.character .pf2e-downtime {
@@ -114,8 +88,10 @@ body.theme-dark {
 
         div.pf2e-downtime-management {
             display:flex;
+
             h4.pf2e-downtime-days-available{
                 flex: 5;
+                color: var(--pf2e-downtime-pc-project-name-color);
             }
     
             button.pf2e-downtime-award-downtime,
@@ -136,6 +112,7 @@ body.theme-dark {
         
         ul.pf2e-downtime-projects-list{
             padding-left: 0px;
+            margin-top: 0px;
             
             li.pf2e-downtime-project {
                 list-style-type: none;

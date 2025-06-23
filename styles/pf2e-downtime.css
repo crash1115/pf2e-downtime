@@ -41,34 +41,6 @@ body.theme-dark .pf2e-downtime-edit-app {
   --pf2e-downtime-app-header-text-color: #c9c7b8;
 }
 
-[data-theme][data-color-scheme=light].pf2e-downtime-edit-app {
-  --pf2e-downtime-app-header-text-color: #5e0000;
-}
-
-[data-theme][data-color-scheme=dark] {
-  --pf2e-downtime-pc-header-text-color: #efe6d8;
-  --pf2e-downtime-pc-header-border-color: #e9d7a1;
-  --pf2e-downtime-pc-project-name-color:#efe6d8;
-  --pf2e-downtime-pc-control-color:#efe6d8;
-  --pf2e-downtime-pc-control-color-hover:#efe6d8;
-  --pf2e-downtime-pc-control-shadow-color-hover: none;
-  --pf2e-downtime-pc-bar-text-color: white;
-  --pf2e-downtime-pc-button-bg-color: #28328f;
-  --pf2e-downtime-pc-button-bg-color-hover: #171f69 ;
-  --pf2e-downtime-party-header-text-color: #efe6d8;
-  --pf2e-downtime-party-header-border-color: #e9d7a1;
-  --pf2e-downtime-party-project-name-color: #efe6d8;
-  --pf2e-downtime-party-control-color:#efe6d8;
-  --pf2e-downtime-party-control-color-hover:#efe6d8;
-  --pf2e-downtime-party-control-shadow-color-hover: none;
-  --pf2e-downtime-party-bar-text-color: white;
-  --pf2e-downtime-party-button-bg-color: #1e6d36;
-  --pf2e-downtime-party-button-bg-color-hover: #124321;
-}
-[data-theme][data-color-scheme=dark].pf2e-downtime-edit-app {
-  --pf2e-downtime-app-header-text-color: #c9c7b8;
-}
-
 .sheet.actor.character .pf2e-downtime div.pf2e-downtime-tab-content header {
   border-bottom: 1px solid var(--pf2e-downtime-pc-header-border-color);
   color: var(--pf2e-downtime-pc-header-text-color);
@@ -83,6 +55,7 @@ body.theme-dark .pf2e-downtime-edit-app {
 }
 .sheet.actor.character .pf2e-downtime div.pf2e-downtime-tab-content div.pf2e-downtime-management h4.pf2e-downtime-days-available {
   flex: 5;
+  color: var(--pf2e-downtime-pc-project-name-color);
 }
 .sheet.actor.character .pf2e-downtime div.pf2e-downtime-tab-content div.pf2e-downtime-management button.pf2e-downtime-award-downtime,
 .sheet.actor.character .pf2e-downtime div.pf2e-downtime-tab-content div.pf2e-downtime-management button.pf2e-downtime-spend-downtime {
@@ -99,6 +72,7 @@ body.theme-dark .pf2e-downtime-edit-app {
 }
 .sheet.actor.character .pf2e-downtime div.pf2e-downtime-tab-content ul.pf2e-downtime-projects-list {
   padding-left: 0px;
+  margin-top: 0px;
 }
 .sheet.actor.character .pf2e-downtime div.pf2e-downtime-tab-content ul.pf2e-downtime-projects-list li.pf2e-downtime-project {
   list-style-type: none;
