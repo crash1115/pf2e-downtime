@@ -1,3 +1,8 @@
+# Version 0.13.2
+- Added a "Work" button to each downtime project; clicking this will bring up the Spend Downtime dialog with the associated project pre-selected
+- Improved styling of disabled project control buttons
+- Fixed a display issue on the downtime spend chat cards with long numbers
+
 # Version 0.13.1
 - Projects now have an option to automatically calculate progress increases based on a fixed rate per downtime unit spent
 - The Spend Downtime dialog's project dropdown now displays progress units
