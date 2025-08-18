@@ -164,11 +164,11 @@ export class SpendHandler {
                 downtimeUnit: UNIT,
                 project: {
                     name: project.name,
-                    oldProgress: oldProgressValue,
-                    newProgress: newProgressValue,
+                    oldProgress: oldProgressValue.toFixed(2),
+                    newProgress: newProgressValue.toFixed(2),
                     progressLabel: project.progress.label,
-                    progressMade: response.progress,
-                    progressToGo: project.progress.max - newProgressValue
+                    progressMade: response.progress.toFixed(2),
+                    progressToGo: (project.progress.max - newProgressValue).toFixed(2)
                 },                
                 daysRemaining: newDowntimeDaysValue
             });
