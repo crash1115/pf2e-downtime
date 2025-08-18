@@ -133,12 +133,12 @@
     </div>
 
     <div class="form-group">
-        <label>Hide From Spend Downtime Dropdown</label>
+        <label>Disable Spending Downtime</label>
         <div class="form-fields">
             <input type="checkbox" name="disableSpend" {{checked project.disableSpend}} {{#unless (pf2e-downtime-user-can-edit project)}}readonly{{/unless}}>
         </div>
         <div class="pf2e-downtime-help-icon"
-             data-tooltip="When checked, this project won't appear in the Spend Downtime dropdown, even if the players have Edit access.">
+             data-tooltip="When checked, players won't be able to spend downtime on this project. It won't appear in the Spend Downtime dropdown menu, and the button to work on the project will be disabled.">
             <i class="fas fa-circle-question"></i>
         </div>
     </div>

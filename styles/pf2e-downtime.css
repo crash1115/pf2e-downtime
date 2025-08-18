@@ -150,7 +150,7 @@ body.theme-light[data-application-theme=github] .pf2e-downtime-edit-app button {
 .sheet.actor.character .pf2e-downtime div.pf2e-downtime-tab-content ul.pf2e-downtime-projects-list li.pf2e-downtime-project {
   list-style-type: none;
   display: grid;
-  grid-template-columns: min-content 200px auto 55px;
+  grid-template-columns: min-content 200px auto 75px;
   height: 35px;
 }
 .sheet.actor.character .pf2e-downtime div.pf2e-downtime-tab-content ul.pf2e-downtime-projects-list li.pf2e-downtime-project:nth-child(odd) {
@@ -215,6 +215,7 @@ body.theme-light[data-application-theme=github] .pf2e-downtime-edit-app button {
   height: 100%;
   margin-left: 5px;
 }
+.sheet.actor.character .pf2e-downtime div.pf2e-downtime-tab-content ul.pf2e-downtime-projects-list li.pf2e-downtime-project div.pf2e-downtime-project-controls button.pf2e-downtime-work-on-project,
 .sheet.actor.character .pf2e-downtime div.pf2e-downtime-tab-content ul.pf2e-downtime-projects-list li.pf2e-downtime-project div.pf2e-downtime-project-controls button.pf2e-downtime-edit-project,
 .sheet.actor.character .pf2e-downtime div.pf2e-downtime-tab-content ul.pf2e-downtime-projects-list li.pf2e-downtime-project div.pf2e-downtime-project-controls button.pf2e-downtime-delete-project,
 .sheet.actor.character .pf2e-downtime div.pf2e-downtime-tab-content ul.pf2e-downtime-projects-list li.pf2e-downtime-project div.pf2e-downtime-project-controls button.pf2e-downtime-restart-project {
@@ -228,11 +229,24 @@ body.theme-light[data-application-theme=github] .pf2e-downtime-edit-app button {
   font-size: var(--font-size-12);
   color: var(--pf2e-downtime-pc-control-color);
 }
+.sheet.actor.character .pf2e-downtime div.pf2e-downtime-tab-content ul.pf2e-downtime-projects-list li.pf2e-downtime-project div.pf2e-downtime-project-controls button.pf2e-downtime-work-on-project:hover,
 .sheet.actor.character .pf2e-downtime div.pf2e-downtime-tab-content ul.pf2e-downtime-projects-list li.pf2e-downtime-project div.pf2e-downtime-project-controls button.pf2e-downtime-edit-project:hover,
 .sheet.actor.character .pf2e-downtime div.pf2e-downtime-tab-content ul.pf2e-downtime-projects-list li.pf2e-downtime-project div.pf2e-downtime-project-controls button.pf2e-downtime-delete-project:hover,
 .sheet.actor.character .pf2e-downtime div.pf2e-downtime-tab-content ul.pf2e-downtime-projects-list li.pf2e-downtime-project div.pf2e-downtime-project-controls button.pf2e-downtime-restart-project:hover {
   color: var(--pf2e-downtime-pc-control-color-hover);
   text-shadow: 0 0 8px var(--pf2e-downtime-pc-control-shadow-color-hover);
+}
+.sheet.actor.character .pf2e-downtime div.pf2e-downtime-tab-content ul.pf2e-downtime-projects-list li.pf2e-downtime-project div.pf2e-downtime-project-controls button.pf2e-downtime-work-on-project:disabled,
+.sheet.actor.character .pf2e-downtime div.pf2e-downtime-tab-content ul.pf2e-downtime-projects-list li.pf2e-downtime-project div.pf2e-downtime-project-controls button.pf2e-downtime-edit-project:disabled,
+.sheet.actor.character .pf2e-downtime div.pf2e-downtime-tab-content ul.pf2e-downtime-projects-list li.pf2e-downtime-project div.pf2e-downtime-project-controls button.pf2e-downtime-delete-project:disabled,
+.sheet.actor.character .pf2e-downtime div.pf2e-downtime-tab-content ul.pf2e-downtime-projects-list li.pf2e-downtime-project div.pf2e-downtime-project-controls button.pf2e-downtime-restart-project:disabled {
+  opacity: 50%;
+}
+.sheet.actor.character .pf2e-downtime div.pf2e-downtime-tab-content ul.pf2e-downtime-projects-list li.pf2e-downtime-project div.pf2e-downtime-project-controls button.pf2e-downtime-work-on-project:disabled:hover,
+.sheet.actor.character .pf2e-downtime div.pf2e-downtime-tab-content ul.pf2e-downtime-projects-list li.pf2e-downtime-project div.pf2e-downtime-project-controls button.pf2e-downtime-edit-project:disabled:hover,
+.sheet.actor.character .pf2e-downtime div.pf2e-downtime-tab-content ul.pf2e-downtime-projects-list li.pf2e-downtime-project div.pf2e-downtime-project-controls button.pf2e-downtime-delete-project:disabled:hover,
+.sheet.actor.character .pf2e-downtime div.pf2e-downtime-tab-content ul.pf2e-downtime-projects-list li.pf2e-downtime-project div.pf2e-downtime-project-controls button.pf2e-downtime-restart-project:disabled:hover {
+  text-shadow: none;
 }
 .sheet.actor.character .pf2e-downtime div.pf2e-downtime-tab-content button.pf2e-downtime-add-project {
   flex: 1;

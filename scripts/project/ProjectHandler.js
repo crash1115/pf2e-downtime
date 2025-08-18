@@ -114,5 +114,12 @@ export class ProjectHandler {
         if(game.user.isGM) return true;
         return project.playerCanView;
     }
+
+    static userCanWorkOn(project){
+        const canEdit = this.userCanEdit(project);
+        const isntFinished = project.progress.current < project.progress.max;
+        const spendEnabled = !project.disableSpend;
+        return canEdit && isntFinished && spendEnabled;
+    }
     
 }

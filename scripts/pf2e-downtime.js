@@ -239,4 +239,13 @@ function activateDowntimeTabListeners(actorData, html){
             }
         }); 
     }
+
+    const workBtns = html[0].querySelectorAll('.pf2e-downtime-work-on-project');
+    for (var i = 0; i < workBtns.length; i++){
+        workBtns[i].addEventListener("click", ev => {
+            const actor = game.actors.get(actorData._id);
+            const projectId = ev.currentTarget.getAttribute('data-pf2e-downtime-project-id');
+            SpendHandler.spendDowntime(actor, projectId);
+        }); 
+    }
 }

@@ -3,12 +3,18 @@ import { ProjectHandler } from "../project/ProjectHandler.js";
 
 export class SpendHandler {
     
-    static async spendDowntime(actor){
+    static async spendDowntime(actor, defaultProjectId = undefined){
         const UNIT = game.settings.get(MODULE, 'downtimeUnit').toLowerCase();
         const UNIT_CAP = UNIT.charAt(0).toUpperCase() + UNIT.slice(1);
         
         const {DialogV2} = foundry.applications.api;
         const fields = foundry.data.fields;
+
+        let projectSelectConfig = {
+            required: true, 
+            default: defaultProjectId,
+            label: "Project"
+        }
 
         const projects = actor.getFlag(MODULE,"projects") || [];
         const sharedProjects = ProjectHandler.getSharedProjectsForActor(actor) || [];
@@ -17,25 +23,27 @@ export class SpendHandler {
         const editable = visible.filter (p => ProjectHandler.userCanEdit(p)) || []; // Projects the user can edit
         const unfinished = editable.filter(p => p.progress.current < p.progress.max) || []; // Projects tht aren't finished
         const canSpend = unfinished.filter(p => !p.disableSpend) || []; // Projects that can have downtime spent on them
-        const choices = canSpend.reduce((choices, project) => Object.assign(choices, {[project.id]: `${project.name} (${project.progress.current} / ${project.progress.max} ${project.progress.label})`}), {});
-        const maxDays = actor.getFlag(MODULE, "downtimeDays");
-               
+
+        if(defaultProjectId){
+            const selectedProject = combined.filter(p => p.id === defaultProjectId);
+            projectSelectConfig.choices = selectedProject.reduce((choices, project) => Object.assign(choices, {[project.id]: `${project.name} (${project.progress.current} / ${project.progress.max} ${project.progress.label})`}), {});;
+            projectSelectConfig.blank = false;
+        } else {
+            projectSelectConfig.choices = canSpend.reduce((choices, project) => Object.assign(choices, {[project.id]: `${project.name} (${project.progress.current} / ${project.progress.max} ${project.progress.label})`}), {});;
+            projectSelectConfig.blank = true;
+        }
+              
         const daysField = new fields.NumberField({
             required: true, 
             integer: true, 
             nullable: false,
             initial: 0,
             min: 0,
-            max: maxDays,
+            max: actor.getFlag(MODULE, "downtimeDays"),
             label: `${UNIT_CAP}s Spent`
         });
 
-        const projectSelect = new fields.StringField({
-            blank: true, 
-            required: true, 
-            choices,
-            label: "Project"
-        });
+        const projectSelect = new fields.StringField(projectSelectConfig);
 
         const progressField = new fields.NumberField({
             required: true, 

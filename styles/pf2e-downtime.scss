@@ -173,16 +173,6 @@ body.theme-light[data-application-theme=github]{
 }
 
 
-
-
-
-// [data-theme][data-color-scheme=light] {
-//     &.pf2e-downtime-edit-app {
-//         --pf2e-downtime-app-header-text-color: #5e0000;
-//     }
-// }
-
-
 // DOWNTIME TAB - PC SHEET
 .sheet.actor.character .pf2e-downtime {
     div.pf2e-downtime-tab-content {
@@ -228,7 +218,7 @@ body.theme-light[data-application-theme=github]{
             li.pf2e-downtime-project {
                 list-style-type: none;
                 display: grid;
-                grid-template-columns: min-content 200px auto 55px;
+                grid-template-columns: min-content 200px auto 75px;
                 height: 35px;
     
                 &:nth-child(odd){
@@ -303,6 +293,7 @@ body.theme-light[data-application-theme=github]{
                     height: 100%;
                     margin-left: 5px;
     
+                    button.pf2e-downtime-work-on-project,
                     button.pf2e-downtime-edit-project,
                     button.pf2e-downtime-delete-project,
                     button.pf2e-downtime-restart-project {
@@ -320,11 +311,19 @@ body.theme-light[data-application-theme=github]{
                             color: var(--pf2e-downtime-pc-control-color-hover);
                             text-shadow: 0 0 8px var(--pf2e-downtime-pc-control-shadow-color-hover);
                         }
+
+                        &:disabled {
+                            opacity: 50%;
+                            &:hover {
+                                text-shadow: none;
+                            }
+                        }
                     }
                 }
                 
             }
         }
+
         button.pf2e-downtime-add-project {
             flex: 1;
             color: var(--pf2e-downtime-pc-button-text-color);

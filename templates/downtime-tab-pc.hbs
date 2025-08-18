@@ -35,6 +35,14 @@
                 </div>
                 {{#if ../../actor.isOwner}}
                 <div class="pf2e-downtime-project-controls">
+                    <button class="pf2e-downtime-work-on-project"
+                            type="button"
+                            title="Work on Project"
+                            data-tooltip="Work on Project"
+                            {{#unless (pf2e-downtime-user-can-work-on this)}}disabled{{/unless}}
+                            data-pf2e-downtime-project-id="{{this.id}}">
+                        <i class="fas fa-hammer"></i>
+                    </button>
                     <button class="pf2e-downtime-restart-project"
                             type="button"
                             title="Restart Project"

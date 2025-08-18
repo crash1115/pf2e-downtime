@@ -17,4 +17,8 @@ export const pf2eDowntimeHelpers = {
         return ProjectHandler.userCanView(project);
     },
 
+    "pf2e-downtime-user-can-work-on": (project) => {
+        return ProjectHandler.userCanWorkOn(project);
+    },
+
 }
