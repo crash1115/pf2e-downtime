@@ -1,3 +1,6 @@
+# Version 0.13.3
+- More rounding fixes
+
 # Version 0.13.2
 - Added a "Work" button to each downtime project; clicking this will bring up the Spend Downtime dialog with the associated project pre-selected
 - Improved styling of disabled project control buttons

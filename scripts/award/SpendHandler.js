@@ -91,7 +91,7 @@ export class SpendHandler {
                         const project = combined.filter(p => p.id === projectId)[0];
                         if(!!project.progress.perDay){
                             const days = event.target.element.querySelector('range-picker[name="days"] input[type="range"]').value;
-                            const newProgress = (days * project.progress.perDay).toFixed(2); //rounding for floating point errors; 2 places is reasonably sane on a currency system based on 10s
+                            const newProgress = 1 * (days * project.progress.perDay).toFixed(3); //rounding for floating point errors; 3 places is reasonably sane on a currency system based on 10s
                             event.target.element.querySelector('input[name="progress"]').value = newProgress;       
                         }
                     }                    
@@ -104,7 +104,7 @@ export class SpendHandler {
                         const project = combined.filter(p => p.id === projectId)[0];
                         if(!!project.progress.perDay){
                             const days = event.target.element.querySelector('range-picker[name="days"] input[type="range"]').value;
-                            const newProgress = (days * project.progress.perDay).toFixed(2); //rounding for floating point errors; 2 places is reasonably sane on a currency system based on 10s
+                            const newProgress = 1 * (days * project.progress.perDay).toFixed(3); //rounding for floating point errors; 3 places is reasonably sane on a currency system based on 10s
                             event.target.element.querySelector('input[name="progress"]').value = newProgress;       
                         }
                     }                    
@@ -117,7 +117,7 @@ export class SpendHandler {
                         const project = combined.filter(p => p.id === projectId)[0];
                         if(!!project.progress.perDay){
                             const days = event.target.element.querySelector('range-picker[name="days"] input[type="range"]').value;
-                            const newProgress = (days * project.progress.perDay).toFixed(2); //rounding for floating point errors; 2 places is reasonably sane on a currency system based on 10s
+                            const newProgress = 1 * (days * project.progress.perDay).toFixed(3); //rounding for floating point errors; 3 places is reasonably sane on a currency system based on 10s
                             event.target.element.querySelector('input[name="progress"]').value = newProgress;       
                         }
                     }                    
@@ -157,7 +157,7 @@ export class SpendHandler {
         let project = ProjectHandler.getProjectForActor(response.project, projectOwner);
         const oldProgressValue = project.progress.current + 0;
         const newProgressValue = Math.min(project.progress.current + response.progress, project.progress.max);
-        project.progress.current = newProgressValue;
+        project.progress.current = 1 * newProgressValue.toFixed(3);
         
         if(userCanUpdate){
             await projectOwner.setFlag(MODULE, "projects", allProjects);
@@ -172,11 +172,11 @@ export class SpendHandler {
                 downtimeUnit: UNIT,
                 project: {
                     name: project.name,
-                    oldProgress: oldProgressValue.toFixed(2),
-                    newProgress: newProgressValue.toFixed(2),
+                    oldProgress: 1 * oldProgressValue.toFixed(3),
+                    newProgress: 1 * newProgressValue.toFixed(3),
                     progressLabel: project.progress.label,
-                    progressMade: response.progress.toFixed(2),
-                    progressToGo: (project.progress.max - newProgressValue).toFixed(2)
+                    progressMade: 1 * response.progress.toFixed(3),
+                    progressToGo: 1 * (project.progress.max - newProgressValue).toFixed(3)
                 },                
                 daysRemaining: newDowntimeDaysValue
             });
